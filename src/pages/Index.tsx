@@ -5,13 +5,13 @@ import CreateHeroSection from "@/components/CreateHeroSection";
 import DemoChat from "@/components/DemoChat";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
-import TimeLine from "@/components/TimeLine";
+import Navigation from "@/components/Navigation";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      {/* Timeline navigation */}
-      <TimeLine />
+      {/* Navigation */}
+      <Navigation />
 
       {/* Hero Section */}
       <HeroSection />

@@ -4,11 +4,11 @@ import heroBackground from "@/assets/hero-background.jpg";
 
 const HeroSection = () => {
   const scrollToContent = () => {
-    document.getElementById("magic-section")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("magic")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background Image with Parallax */}
       <motion.div
         className="absolute inset-0 z-0"
@@ -97,11 +97,11 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-display text-4xl md:text-6xl lg:text-7xl font-medium text-foreground mb-6 leading-tight"
+          className="font-display text-4xl md:text-6xl lg:text-7xl font-medium text-foreground mb-6 leading-tight dark:drop-shadow-[0_0_30px_hsl(var(--foreground)/0.1)]"
         >
           Оживи голоса прошлого.
           <br />
-          <span className="text-primary italic">Веди диалог с историей.</span>
+          <span className="text-primary italic dark:drop-shadow-[0_0_20px_hsl(var(--primary)/0.5)]">Веди диалог с историей.</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -121,7 +121,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
-          className="group relative px-10 py-4 bg-primary text-primary-foreground font-display text-lg rounded-sm overflow-hidden transition-all duration-300 hover:shadow-elevated"
+          className="group relative px-10 py-4 bg-primary text-primary-foreground font-display text-lg rounded-sm overflow-hidden transition-all duration-300 hover:shadow-elevated dark:shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
         >
           <span className="relative z-10">Начать путешествие</span>
           <motion.div
