@@ -54,7 +54,7 @@ const DemoChat = () => {
   ];
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-background">
+    <section id="demo" className="relative py-24 md:py-32 overflow-hidden bg-background">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div
@@ -68,8 +68,8 @@ const DemoChat = () => {
             <Sparkles className="w-4 h-4 text-accent" />
             <span className="text-sm text-accent font-medium">Интерактивное демо</span>
           </div>
-          <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground mb-6">
-            Попробуйте <span className="text-primary italic">прямо сейчас</span>
+          <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground mb-6 dark:drop-shadow-[0_0_20px_hsl(var(--foreground)/0.1)]">
+            Попробуйте <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">прямо сейчас</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Задайте вопрос Оскару Уайльду — одному из самых остроумных писателей в истории
@@ -84,7 +84,7 @@ const DemoChat = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-2xl mx-auto"
         >
-          <div className="bg-card border border-border rounded-lg shadow-elevated overflow-hidden">
+          <div className="bg-card border border-border rounded-lg shadow-elevated overflow-hidden dark:shadow-[0_0_40px_hsl(var(--accent)/0.15)]">
             {/* Chat Header */}
             <div className="flex items-center gap-4 px-6 py-4 bg-secondary/50 border-b border-border">
               <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-accent/30">

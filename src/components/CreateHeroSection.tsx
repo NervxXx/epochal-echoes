@@ -10,7 +10,7 @@ const CreateHeroSection = () => {
   ];
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
+    <section id="create" className="relative py-24 md:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-secondary/50 to-secondary/30" />
 
@@ -26,7 +26,7 @@ const CreateHeroSection = () => {
           >
             <div className="relative max-w-md mx-auto lg:mx-0">
               {/* Book/Grimoire styling */}
-              <div className="relative bg-card rounded-sm shadow-elevated overflow-hidden">
+              <div className="relative bg-card rounded-sm shadow-elevated overflow-hidden dark:shadow-[0_0_40px_hsl(var(--accent)/0.15)] dark:border dark:border-border">
                 {/* Book spine effect */}
                 <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-foreground/10 to-transparent" />
 
@@ -106,8 +106,8 @@ const CreateHeroSection = () => {
             transition={{ duration: 0.8 }}
             className="order-1 lg:order-2"
           >
-            <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground mb-6">
-              Добавь своего <span className="text-primary italic">героя</span>
+            <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground mb-6 dark:drop-shadow-[0_0_20px_hsl(var(--foreground)/0.1)]">
+              Добавь своего <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">героя</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
               Нет вашего кумира? Добавьте его! Обучите ИИ-личность на основе биографий, речей и мемуаров.

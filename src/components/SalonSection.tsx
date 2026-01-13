@@ -11,7 +11,7 @@ const SalonSection = () => {
   ];
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-background">
+    <section id="salon" className="relative py-24 md:py-32 overflow-hidden bg-background">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
@@ -21,8 +21,8 @@ const SalonSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground mb-6">
-              Создай свой <span className="text-primary italic">салон</span>
+            <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground mb-6 dark:drop-shadow-[0_0_20px_hsl(var(--foreground)/0.1)]">
+              Создай свой <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">салон</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
               Соберите уникальные группы. Что обсудят в одной комнате Цезарь, Tesla и Будда?
@@ -131,7 +131,7 @@ const SalonSection = () => {
                   className="relative"
                 >
                   {/* Glow ring */}
-                  <div className="absolute -inset-2 rounded-full bg-accent/20 animate-glow" />
+                  <div className="absolute -inset-2 rounded-full bg-accent/20 animate-glow dark:bg-accent/30 dark:shadow-[0_0_30px_hsl(var(--accent)/0.5)]" />
 
                   {/* Portrait */}
                   <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-4 border-accent/30 shadow-portrait">

@@ -63,7 +63,7 @@ const portraits = [
 
 const MagicDialogSection = () => {
   return (
-    <section id="magic-section" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="magic" className="relative py-24 md:py-32 overflow-hidden">
       {/* Paper texture overlay */}
       <div className="absolute inset-0 bg-secondary/50" />
       <div className="absolute inset-0 texture-paper" />
@@ -77,8 +77,8 @@ const MagicDialogSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground mb-6">
-            Магия <span className="text-primary italic">диалога</span>
+          <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground mb-6 dark:drop-shadow-[0_0_20px_hsl(var(--foreground)/0.1)]">
+            Магия <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">диалога</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Общайтесь с 50+ величайшими умами и сердцами истории: от Леонардо да Винчи до Клеопатры,

@@ -3,7 +3,7 @@ import { Download, ArrowRight } from "lucide-react";
 
 const FinalCTA = () => {
   return (
-    <section className="relative py-24 md:py-40 overflow-hidden">
+    <section id="cta" className="relative py-24 md:py-40 overflow-hidden">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/10" />
 
@@ -49,11 +49,11 @@ const FinalCTA = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-medium text-foreground mb-6 leading-tight"
+            className="font-display text-4xl md:text-6xl lg:text-7xl font-medium text-foreground mb-6 leading-tight dark:drop-shadow-[0_0_30px_hsl(var(--foreground)/0.1)]"
           >
             История ждёт
             <br />
-            <span className="text-primary italic">вашего вопроса</span>
+            <span className="text-primary italic dark:drop-shadow-[0_0_20px_hsl(var(--primary)/0.5)]">вашего вопроса</span>
           </motion.h2>
 
           <motion.p
@@ -77,7 +77,7 @@ const FinalCTA = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="group relative px-8 py-4 bg-primary text-primary-foreground font-display text-lg rounded-sm overflow-hidden transition-all duration-300 hover:shadow-elevated flex items-center justify-center gap-3"
+              className="group relative px-8 py-4 bg-primary text-primary-foreground font-display text-lg rounded-sm overflow-hidden transition-all duration-300 hover:shadow-elevated flex items-center justify-center gap-3 dark:shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
             >
               <Download className="w-5 h-5" />
               <span>Скачать приложение</span>
