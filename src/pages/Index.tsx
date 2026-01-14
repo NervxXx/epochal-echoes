@@ -6,12 +6,16 @@ import DemoChat from "@/components/DemoChat";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Navigation */}
       <Navigation />
+      
+      {/* Scroll Progress Indicator */}
+      <ScrollProgress />
 
       {/* Hero Section */}
       <HeroSection />
