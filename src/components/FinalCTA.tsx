@@ -1,31 +1,62 @@
 import { motion } from "framer-motion";
-import { Download, ArrowRight } from "lucide-react";
+import { Download, ArrowRight, Sparkles, Crown, Scroll } from "lucide-react";
 
 const FinalCTA = () => {
   return (
     <section id="cta" className="relative py-24 md:py-40 overflow-hidden">
-      {/* Gradient background */}
+      {/* Rich gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/10" />
+      
+      {/* Animated background pattern */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23000' stroke-width='0.3'/%3E%3Ccircle cx='50' cy='50' r='20' fill='none' stroke='%23000' stroke-width='0.3'/%3E%3C/svg%3E")`,
+        backgroundSize: '100px 100px'
+      }} />
 
-      {/* Decorative elements */}
+      {/* Decorative floating elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating orbs */}
+        {/* Large floating orbs */}
         <motion.div
-          className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-accent/5 blur-3xl"
+          className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full bg-accent/10 blur-3xl"
           animate={{
-            scale: [1, 1.2, 1],
+            scale: [1, 1.3, 1],
             opacity: [0.3, 0.5, 0.3],
+            x: [0, 30, 0],
+            y: [0, -20, 0],
           }}
-          transition={{ duration: 8, repeat: Infinity }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.3, 0.5, 0.3],
+            x: [0, -30, 0],
+            y: [0, 20, 0],
           }}
-          transition={{ duration: 8, repeat: Infinity, delay: 1 }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
+
+        {/* Floating particles */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-accent/50 rounded-full"
+            style={{
+              left: `${10 + Math.random() * 80}%`,
+              top: `${10 + Math.random() * 80}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.2, 0.8, 0.2],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 3,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+            }}
+          />
+        ))}
       </div>
 
       <div className="relative z-10 container mx-auto px-4 text-center">
@@ -35,76 +66,164 @@ const FinalCTA = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-3xl mx-auto"
+          className="max-w-4xl mx-auto"
         >
+          {/* Decorative crown */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="flex justify-center mb-8"
+          >
+            <div className="relative">
+              <Crown className="w-12 h-12 text-accent dark:drop-shadow-[0_0_15px_hsl(var(--accent)/0.5)]" />
+              <motion.div
+                className="absolute -inset-4"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              >
+                <div className="w-full h-full rounded-full border border-dashed border-accent/30" />
+              </motion.div>
+            </div>
+          </motion.div>
+
           {/* Top ornament */}
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="w-16 h-px bg-gradient-to-r from-transparent to-accent" />
-            <div className="w-3 h-3 rotate-45 border border-accent" />
-            <div className="w-16 h-px bg-gradient-to-l from-transparent to-accent" />
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="flex items-center justify-center gap-4 mb-10"
+          >
+            <div className="w-20 h-px bg-gradient-to-r from-transparent to-accent" />
+            <Sparkles className="w-5 h-5 text-accent" />
+            <div className="w-20 h-px bg-gradient-to-l from-transparent to-accent" />
+          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-medium text-foreground mb-6 leading-tight dark:drop-shadow-[0_0_30px_hsl(var(--foreground)/0.1)]"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="font-display text-4xl md:text-6xl lg:text-7xl font-medium text-foreground mb-8 leading-tight"
           >
-            История ждёт
+            <span className="relative inline-block">
+              История ждёт
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                viewport={{ once: true }}
+                transition={{ delay: 1, duration: 0.8 }}
+                className="absolute -bottom-1 left-0 h-2 bg-accent/20 -z-10"
+              />
+            </span>
             <br />
-            <span className="text-primary italic dark:drop-shadow-[0_0_20px_hsl(var(--primary)/0.5)]">вашего вопроса</span>
+            <span className="text-primary italic dark:drop-shadow-[0_0_25px_hsl(var(--primary)/0.6)]">
+              вашего вопроса
+            </span>
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-muted-foreground mb-12 max-w-xl mx-auto"
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed"
           >
             Присоединяйтесь к тысячам исследователей, которые уже открыли для себя магию диалога с прошлым
           </motion.p>
+
+          {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.7 }}
+            className="flex flex-wrap justify-center gap-8 md:gap-16 mb-12"
+          >
+            {[
+              { value: "10K+", label: "Пользователей" },
+              { value: "500K+", label: "Диалогов" },
+              { value: "4.9", label: "Рейтинг" },
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8 + index * 0.1 }}
+                className="text-center"
+              >
+                <div className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-1 dark:drop-shadow-[0_0_10px_hsl(var(--foreground)/0.2)]">
+                  {stat.value}
+                </div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <motion.button
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 50px hsl(var(--primary) / 0.5)" }}
               whileTap={{ scale: 0.98 }}
-              className="group relative px-8 py-4 bg-primary text-primary-foreground font-display text-lg rounded-sm overflow-hidden transition-all duration-300 hover:shadow-elevated flex items-center justify-center gap-3 dark:shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
+              className="group relative px-10 py-5 bg-primary text-primary-foreground font-display text-lg rounded-sm overflow-hidden transition-all duration-300 dark:shadow-[0_0_40px_hsl(var(--primary)/0.4)]"
             >
-              <Download className="w-5 h-5" />
-              <span>Скачать приложение</span>
+              <span className="relative z-10 flex items-center justify-center gap-3">
+                <Download className="w-5 h-5" />
+                Скачать приложение
+              </span>
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "100%" }}
-                transition={{ duration: 0.6 }}
+                className="absolute inset-0 bg-gradient-to-r from-accent/30 via-transparent to-accent/30"
+                animate={{ x: ["-100%", "100%"] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               />
             </motion.button>
 
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="group px-8 py-4 bg-transparent border-2 border-primary text-primary font-display text-lg rounded-sm transition-all duration-300 hover:bg-primary/10 flex items-center justify-center gap-3"
+              className="group px-10 py-5 bg-transparent border-2 border-primary text-primary font-display text-lg rounded-sm transition-all duration-300 hover:bg-primary/10 flex items-center justify-center gap-3"
             >
-              <span>Начать бесплатно</span>
+              <Scroll className="w-5 h-5" />
+              Начать бесплатно
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </motion.button>
           </motion.div>
 
+          {/* Trust badge */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 1.1 }}
+            className="mt-8 text-sm text-muted-foreground"
+          >
+            <span className="inline-flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-accent" />
+              Бесплатный доступ • Без кредитной карты
+            </span>
+          </motion.div>
+
           {/* Bottom ornament */}
-          <div className="flex items-center justify-center gap-4 mt-12">
-            <div className="w-16 h-px bg-gradient-to-r from-transparent to-accent" />
-            <div className="w-3 h-3 rotate-45 border border-accent" />
-            <div className="w-16 h-px bg-gradient-to-l from-transparent to-accent" />
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 1.2 }}
+            className="flex items-center justify-center gap-4 mt-16"
+          >
+            <div className="w-24 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
+            <div className="w-3 h-3 rotate-45 border-2 border-accent dark:shadow-[0_0_10px_hsl(var(--accent))]" />
+            <div className="w-24 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
+          </motion.div>
         </motion.div>
       </div>
     </section>
