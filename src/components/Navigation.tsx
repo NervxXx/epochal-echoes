@@ -1,5 +1,15 @@
 import { motion } from "framer-motion";
+import { Menu } from "lucide-react";
+import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 
 const navItems = [
   { name: "Главная", href: "#hero" },
@@ -10,8 +20,11 @@ const navItems = [
 ];
 
 const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    setIsOpen(false);
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -58,8 +71,46 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Right side: Theme toggle + CTA */}
+          {/* Right side: Mobile menu + Theme toggle + CTA */}
           <div className="flex items-center gap-3">
+            {/* Mobile hamburger menu */}
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="md:hidden"
+                  aria-label="Открыть меню"
+                >
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[280px] bg-background/95 backdrop-blur-md">
+                <SheetHeader>
+                  <SheetTitle className="font-display text-lg">Навигация</SheetTitle>
+                </SheetHeader>
+                <nav className="mt-8 flex flex-col gap-2">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      onClick={(e) => scrollToSection(e, item.href)}
+                      className="px-4 py-3 text-base text-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                  <a
+                    href="#cta"
+                    onClick={(e) => scrollToSection(e, "#cta")}
+                    className="mt-4 px-4 py-3 rounded-full bg-primary text-primary-foreground text-center font-medium hover:bg-primary/90 transition-colors"
+                  >
+                    Начать
+                  </a>
+                </nav>
+              </SheetContent>
+            </Sheet>
+
             <ThemeToggle />
             
             <motion.a
