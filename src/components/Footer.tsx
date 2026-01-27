@@ -35,33 +35,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden">
-      {/* Decorative top border */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+    <footer className="relative">
+      {/* Simple top border */}
+      <div className="h-px bg-border" />
       
-      {/* Main footer background with rich styling */}
-      <div className="relative bg-gradient-to-b from-secondary/60 to-secondary/80 dark:from-secondary/40 dark:to-secondary/60 pt-20 pb-8">
-        {/* Paper texture */}
-        <div className="absolute inset-0 texture-paper opacity-50" />
-        
-        {/* Decorative pattern */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='none' stroke='%23000' stroke-width='0.3'/%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px'
-        }} />
-        
-        {/* Decorative crown at top */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="absolute top-8 left-1/2 -translate-x-1/2"
-        >
-          <div className="relative">
-            <Crown className="w-10 h-10 text-accent/30" />
-            <div className="absolute -inset-4 rounded-full border border-dashed border-accent/10" />
-          </div>
-        </motion.div>
+      {/* Clean footer background */}
+      <div className="relative bg-secondary pt-16 pb-8">
 
         <div className="relative z-10 container mx-auto px-4">
           {/* Top section with logo and features */}
@@ -222,8 +201,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom glow effect */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent dark:shadow-[0_0_30px_hsl(var(--primary)/0.3)]" />
       </div>
     </footer>
   );
