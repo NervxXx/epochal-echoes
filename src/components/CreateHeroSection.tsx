@@ -1,5 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Sliders, BookOpen, MessageSquare, Sparkles, Wand2, Upload, Check } from "lucide-react";
+import AnimatedText from "./AnimatedText";
+import ParallaxBackground from "./ParallaxBackground";
 
 const CreateHeroSection = () => {
   const features = [
@@ -19,10 +22,12 @@ const CreateHeroSection = () => {
     <section id="create" className="relative py-24 md:py-32 overflow-hidden">
       {/* Background with subtle pattern */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-secondary/50 to-secondary/30" />
-      <div className="absolute inset-0 opacity-[0.015]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0v40M0 20h40' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg%3E")`,
-        backgroundSize: '40px 40px'
-      }} />
+      <ParallaxBackground speed={0.25} className="absolute inset-0 opacity-[0.015]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0v40M0 20h40' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg%3E")`,
+          backgroundSize: '40px 40px'
+        }} />
+      </ParallaxBackground>
 
       <div className="relative z-10 container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -209,9 +214,11 @@ const CreateHeroSection = () => {
             </motion.div>
 
             <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground mb-6 dark:drop-shadow-[0_0_20px_hsl(var(--foreground)/0.1)]">
-              Добавь своего{" "}
+              <AnimatedText text="Добавь своего" delay={0.2} />{" "}
               <span className="relative inline-block">
-                <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">героя</span>
+                <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">
+                  <AnimatedText text="героя" delay={0.5} />
+                </span>
                 <motion.svg
                   viewBox="0 0 100 10"
                   className="absolute -bottom-2 left-0 w-full h-3"
