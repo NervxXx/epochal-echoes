@@ -1,12 +1,11 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 
 interface AnimatedTextProps {
   text: string;
   className?: string;
   delay?: number;
   staggerDelay?: number;
-  as?: keyof JSX.IntrinsicElements;
 }
 
 const AnimatedText = ({
@@ -14,12 +13,11 @@ const AnimatedText = ({
   className = "",
   delay = 0,
   staggerDelay = 0.03,
-  as: Component = "span",
 }: AnimatedTextProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
-  const words = text.split(" ");
+  const words = useMemo(() => text.split(" "), [text]);
 
   const container = {
     hidden: { opacity: 0 },

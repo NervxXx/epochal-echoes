@@ -39,6 +39,8 @@ const PortraitCard = ({ name, era, quote, image, delay = 0 }: PortraitCardProps)
           <img
             src={image}
             alt={name}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
 

@@ -22,6 +22,8 @@ const HeroSection = () => {
           src={heroBackground}
           alt="Historical map with silhouettes"
           className="w-full h-full object-cover"
+          loading="eager"
+          decoding="async"
           initial={{ scale: 1.2, filter: "blur(10px)" }}
           animate={{ scale: 1, filter: "blur(0px)" }}
           transition={{ duration: 2, ease: "easeOut" }}
@@ -35,29 +37,29 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,hsl(var(--background)/0.4)_70%,hsl(var(--background)/0.8)_100%)]" />
       </div>
 
-      {/* Floating golden particles */}
+      {/* Floating golden particles - optimized */}
       <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((i) => (
           <motion.div
             key={i}
             className="absolute rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${2 + Math.random() * 4}px`,
-              height: `${2 + Math.random() * 4}px`,
+              left: `${5 + i * 6.5}%`,
+              top: `${10 + (i % 5) * 18}%`,
+              width: `${2 + (i % 3) * 2}px`,
+              height: `${2 + (i % 3) * 2}px`,
               background: `radial-gradient(circle, hsl(var(--accent)) 0%, transparent 70%)`,
             }}
             animate={{
-              y: [0, -50 - Math.random() * 50, 0],
-              x: [0, Math.random() * 20 - 10, 0],
+              y: [0, -50 - (i % 4) * 15, 0],
+              x: [0, (i % 2 === 0 ? 10 : -10), 0],
               opacity: [0, 0.8, 0],
               scale: [0.5, 1.2, 0.5],
             }}
             transition={{
-              duration: 4 + Math.random() * 4,
+              duration: 4 + (i % 4),
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: i * 0.3,
               ease: "easeInOut",
             }}
           />
