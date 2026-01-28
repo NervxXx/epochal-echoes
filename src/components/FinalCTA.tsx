@@ -37,23 +37,23 @@ const FinalCTA = () => {
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
+        {/* Floating particles - optimized with useMemo-like static array */}
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-accent/50 rounded-full"
             style={{
-              left: `${10 + Math.random() * 80}%`,
-              top: `${10 + Math.random() * 80}%`,
+              left: `${15 + i * 8}%`,
+              top: `${20 + (i % 5) * 15}%`,
             }}
             animate={{
               y: [0, -30, 0],
               opacity: [0.2, 0.8, 0.2],
             }}
             transition={{
-              duration: 3 + Math.random() * 3,
+              duration: 4 + (i % 3),
               repeat: Infinity,
-              delay: Math.random() * 3,
+              delay: i * 0.4,
             }}
           />
         ))}

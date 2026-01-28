@@ -112,7 +112,7 @@ const DemoChat = () => {
               <div className="flex items-center gap-4 px-6 py-4 bg-gradient-to-r from-secondary/80 via-secondary/50 to-secondary/80 border-b border-border">
                 <div className="relative">
                   <div className="w-14 h-14 rounded-full overflow-hidden border-3 border-accent/50 shadow-lg">
-                    <img src={wildeImg} alt="Oscar Wilde" className="w-full h-full object-cover" />
+                    <img src={wildeImg} alt="Oscar Wilde" loading="lazy" className="w-full h-full object-cover" />
                   </div>
                   {/* Online indicator */}
                   <motion.div
@@ -141,12 +141,13 @@ const DemoChat = () => {
 
               {/* Messages */}
               <div className="h-80 overflow-y-auto p-6 space-y-4 bg-gradient-to-b from-background/50 to-background">
-                <AnimatePresence>
+                <AnimatePresence mode="popLayout">
                   {messages.map((message, index) => (
                     <motion.div
-                      key={index}
+                      key={`msg-${index}`}
                       initial={{ opacity: 0, y: 15, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.3 }}
                       className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                     >
