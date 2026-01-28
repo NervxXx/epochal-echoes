@@ -1,6 +1,9 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Sparkles, Users, BookOpen } from "lucide-react";
 import PortraitCard from "./PortraitCard";
+import AnimatedText from "./AnimatedText";
+import ParallaxBackground from "./ParallaxBackground";
 
 import leonardoImg from "@/assets/portraits/leonardo.jpg";
 import cleopatraImg from "@/assets/portraits/cleopatra.jpg";
@@ -75,13 +78,13 @@ const MagicDialogSection = () => {
       <div className="absolute inset-0 bg-secondary/50" />
       <div className="absolute inset-0 texture-paper" />
       
-      {/* Decorative background pattern */}
-      <div className="absolute inset-0 opacity-5 dark:opacity-[0.02]">
+      {/* Parallax decorative pattern */}
+      <ParallaxBackground speed={0.3} className="absolute inset-0 opacity-5 dark:opacity-[0.02]">
         <div className="absolute inset-0" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg%3E")`,
           backgroundSize: '60px 60px'
         }} />
-      </div>
+      </ParallaxBackground>
 
       <div className="relative z-10 container mx-auto px-4">
         {/* Section Header with decorative elements */}
@@ -108,9 +111,11 @@ const MagicDialogSection = () => {
           </motion.div>
 
           <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-medium text-foreground mb-6 dark:drop-shadow-[0_0_20px_hsl(var(--foreground)/0.1)]">
-            Магия{" "}
+            <AnimatedText text="Магия" delay={0.2} />{" "}
             <span className="relative inline-block">
-              <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">диалога</span>
+              <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">
+                <AnimatedText text="диалога" delay={0.4} />
+              </span>
               <motion.svg
                 viewBox="0 0 200 20"
                 className="absolute -bottom-2 left-0 w-full h-4"

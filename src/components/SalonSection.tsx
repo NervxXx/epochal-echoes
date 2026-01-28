@@ -1,6 +1,8 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { MessageCircle, Users, Star, Bookmark } from "lucide-react";
+import AnimatedText from "./AnimatedText";
+import ParallaxBackground from "./ParallaxBackground";
 import napoleonImg from "@/assets/portraits/napoleon.jpg";
 import shakespeareImg from "@/assets/portraits/shakespeare.jpg";
 import curieImg from "@/assets/portraits/curie.jpg";
@@ -23,8 +25,8 @@ const SalonSection = () => {
 
   return (
     <section id="salon" className="relative py-24 md:py-32 overflow-hidden bg-background">
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {/* Parallax decorative background elements */}
+      <ParallaxBackground speed={0.4} className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
@@ -48,7 +50,7 @@ const SalonSection = () => {
             ))}
           </svg>
         </motion.div>
-      </div>
+      </ParallaxBackground>
 
       <div className="container mx-auto px-4" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -71,9 +73,11 @@ const SalonSection = () => {
             </motion.div>
 
             <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground mb-6 dark:drop-shadow-[0_0_20px_hsl(var(--foreground)/0.1)]">
-              Создай свой{" "}
+              <AnimatedText text="Создай свой" delay={0.2} />{" "}
               <span className="relative inline-block">
-                <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">салон</span>
+                <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">
+                  <AnimatedText text="салон" delay={0.5} />
+                </span>
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: "100%" }}
