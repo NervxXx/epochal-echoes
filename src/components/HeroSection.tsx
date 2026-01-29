@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Scroll, Feather, Crown } from "lucide-react";
+import { Scroll, Feather, Crown } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
 
 const HeroSection = () => {
@@ -212,7 +212,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex flex-col gap-4 justify-center items-center"
         >
           <motion.button
             whileHover={{ scale: 1.05, boxShadow: "0 0 40px hsl(var(--primary) / 0.5)" }}
@@ -231,35 +231,8 @@ const HeroSection = () => {
           </motion.button>
 
           <span className="text-muted-foreground font-display italic text-sm">
-            Бесплатно • Без регистрации
+            Бесплатно
           </span>
-        </motion.div>
-
-        {/* Scroll Indicator with enhanced animation */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer"
-          onClick={scrollToContent}
-        >
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group"
-          >
-            <span className="font-display text-sm italic tracking-wide">Разверните свиток</span>
-            <div className="relative">
-              <ChevronDown className="w-6 h-6 group-hover:text-accent transition-colors" />
-              <motion.div
-                className="absolute inset-0"
-                animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <ChevronDown className="w-6 h-6 text-accent" />
-              </motion.div>
-            </div>
-          </motion.div>
         </motion.div>
       </motion.div>
 
