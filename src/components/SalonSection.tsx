@@ -147,9 +147,9 @@ const SalonSection = () => {
 
               {/* Triangular connection lines */}
               {[
-                { x1: 100, y1: 120, x2: 250, y2: 280 },
-                { x1: 250, y1: 280, x2: 400, y2: 120 },
-                { x1: 400, y1: 120, x2: 100, y2: 120 },
+                { x1: 80, y1: 120, x2: 220, y2: 280 },
+                { x1: 220, y1: 280, x2: 360, y2: 120 },
+                { x1: 360, y1: 120, x2: 80, y2: 120 },
               ].map((line, index) => (
                 <motion.line
                   key={index}
@@ -177,7 +177,7 @@ const SalonSection = () => {
                   initial={{ opacity: 0 }}
                   animate={{
                     opacity: [0, 1, 1, 0],
-                    cx: [100, 250, 400, 100][i % 3 === 0 ? 0 : i % 3],
+                    cx: [80, 220, 360, 80][i % 3 === 0 ? 0 : i % 3],
                     cy: [120, 280, 120, 120][i % 3 === 0 ? 0 : i % 3],
                   }}
                   transition={{
@@ -193,9 +193,9 @@ const SalonSection = () => {
             {/* Portrait circles with enhanced styling */}
             {portraits.map((portrait, index) => {
               const positions = [
-                { left: "10%", top: "15%" },
-                { left: "40%", top: "55%" },
-                { left: "70%", top: "15%" },
+                { left: "5%", top: "15%" },
+                { left: "35%", top: "55%" },
+                { left: "62%", top: "15%" },
               ];
               
               return (
