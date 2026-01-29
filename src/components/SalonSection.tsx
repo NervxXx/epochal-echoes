@@ -259,7 +259,7 @@ const SalonSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 1.5 }}
-              className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-full max-w-xs"
+              className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-full max-w-xs"
             >
               <div className="bg-card/90 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-elevated">
                 <div className="flex items-start gap-3">
