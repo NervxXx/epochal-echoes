@@ -1,21 +1,23 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Sliders, BookOpen, MessageSquare, Sparkles, Wand2, Upload, Check } from "lucide-react";
 import AnimatedText from "./AnimatedText";
 import ParallaxBackground from "./ParallaxBackground";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CreateHeroSection = () => {
+  const { t } = useLanguage();
+
   const features = [
-    { icon: BookOpen, label: "Биография", value: "Загрузите книги и мемуары", progress: 85 },
-    { icon: MessageSquare, label: "Стиль речи", value: "Формальный / Дружеский", progress: 70 },
-    { icon: Sliders, label: "Характер", value: "Настройте личность", progress: 90 },
-    { icon: Sparkles, label: "Эпоха", value: "Исторический контекст", progress: 75 },
+    { icon: BookOpen, label: t("create.feature1.label"), value: t("create.feature1.value"), progress: 85 },
+    { icon: MessageSquare, label: t("create.feature2.label"), value: t("create.feature2.value"), progress: 70 },
+    { icon: Sliders, label: t("create.feature3.label"), value: t("create.feature3.value"), progress: 90 },
+    { icon: Sparkles, label: t("create.feature4.label"), value: t("create.feature4.value"), progress: 75 },
   ];
 
   const steps = [
-    { icon: Upload, text: "Загрузите источники", done: true },
-    { icon: Wand2, text: "ИИ анализирует данные", done: true },
-    { icon: Sparkles, text: "Персонаж оживает", done: false },
+    { icon: Upload, text: t("create.step1"), done: true },
+    { icon: Wand2, text: t("create.step2"), done: true },
+    { icon: Sparkles, text: t("create.step3"), done: false },
   ];
 
   return (
@@ -66,9 +68,9 @@ const CreateHeroSection = () => {
                     </div>
                     <div>
                       <h3 className="font-display text-lg text-foreground">
-                        Создание персонажа
+                        {t("create.grimoire.title")}
                       </h3>
-                      <p className="text-xs text-muted-foreground">Гримуар оживления</p>
+                      <p className="text-xs text-muted-foreground">{t("create.grimoire.subtitle")}</p>
                     </div>
                   </div>
                 </div>
@@ -106,7 +108,7 @@ const CreateHeroSection = () => {
                   {/* Name input with typewriter effect */}
                   <div>
                     <label className="text-sm text-muted-foreground mb-2 block font-display">
-                      Имя исторической личности
+                      {t("create.name.label")}
                     </label>
                     <div className="bg-background border-2 border-accent/30 rounded-sm px-4 py-3 relative overflow-hidden">
                       <motion.span 
@@ -115,7 +117,7 @@ const CreateHeroSection = () => {
                         whileInView={{ width: "auto" }}
                         viewport={{ once: true }}
                       >
-                        Никола Тесла
+                        {t("create.name.value")}
                       </motion.span>
                       <motion.span 
                         className="text-accent"
@@ -177,7 +179,7 @@ const CreateHeroSection = () => {
                   >
                     <span className="relative z-10 flex items-center justify-center gap-2">
                       <Sparkles className="w-5 h-5" />
-                      Оживить персонажа
+                      {t("create.button")}
                     </span>
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-accent/0 via-white/20 to-accent/0"
@@ -210,14 +212,14 @@ const CreateHeroSection = () => {
               className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-6"
             >
               <Wand2 className="w-4 h-4 text-primary" />
-              <span className="text-sm text-primary font-medium">Создайте любого персонажа</span>
+              <span className="text-sm text-primary font-medium">{t("create.badge")}</span>
             </motion.div>
 
             <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground mb-6 dark:drop-shadow-[0_0_20px_hsl(var(--foreground)/0.1)]">
-              <AnimatedText text="Добавь своего" delay={0.2} />{" "}
+              <AnimatedText text={t("create.title1")} delay={0.2} />{" "}
               <span className="relative inline-block">
                 <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">
-                  <AnimatedText text="героя" delay={0.5} />
+                  <AnimatedText text={t("create.title2")} delay={0.5} />
                 </span>
                 <motion.svg
                   viewBox="0 0 100 10"
@@ -237,11 +239,10 @@ const CreateHeroSection = () => {
               </span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Нет вашего кумира? <span className="text-foreground font-medium">Добавьте его!</span> Обучите ИИ-личность на основе биографий, речей и мемуаров.
+              {t("create.subtitle1")} <span className="text-foreground font-medium">{t("create.subtitle1.action")}</span> {t("create.subtitle1.text")}
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Наш алгоритм проанализирует исторические источники и создаст уникальную личность, сохраняя
-              аутентичность взглядов и манеру общения вашего персонажа.
+              {t("create.subtitle2")}
             </p>
 
             {/* Tip card with decorative border */}
@@ -258,9 +259,9 @@ const CreateHeroSection = () => {
                   <Sparkles className="w-4 h-4 text-accent" />
                 </div>
                 <div>
-                  <p className="text-sm text-foreground font-medium mb-1">Совет эксперта</p>
+                  <p className="text-sm text-foreground font-medium mb-1">{t("create.tip.title")}</p>
                   <p className="text-sm text-muted-foreground">
-                    Чем больше источников вы загрузите, тем глубже и достовернее будет личность вашего персонажа.
+                    {t("create.tip.text")}
                   </p>
                 </div>
               </div>

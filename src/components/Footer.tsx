@@ -1,31 +1,34 @@
 import { motion } from "framer-motion";
 import { Feather, BookOpen, Users, Sparkles, Crown, Mail, MapPin } from "lucide-react";
-
-const signatures = [
-  { name: "Leonardo da Vinci", style: "italic" },
-  { name: "William Shakespeare", style: "normal" },
-  { name: "Marie Curie", style: "italic" },
-  { name: "Albert Einstein", style: "normal" },
-  { name: "Cleopatra VII", style: "italic" },
-  { name: "Oscar Wilde", style: "normal" },
-  { name: "Napoleon Bonaparte", style: "italic" },
-  { name: "Frida Kahlo", style: "normal" },
-];
-
-const navLinks = [
-  { name: "О проекте", href: "#hero" },
-  { name: "Персонажи", href: "#magic" },
-  { name: "Салон", href: "#salon" },
-  { name: "Создать", href: "#create" },
-];
-
-const features = [
-  { icon: BookOpen, text: "50+ исторических персонажей" },
-  { icon: Users, text: "Групповые диалоги" },
-  { icon: Sparkles, text: "ИИ нового поколения" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t, language } = useLanguage();
+
+  const signatures = [
+    { name: language === "ru" ? "Леонардо да Винчи" : "Leonardo da Vinci", style: "italic" },
+    { name: language === "ru" ? "Уильям Шекспир" : "William Shakespeare", style: "normal" },
+    { name: language === "ru" ? "Мария Кюри" : "Marie Curie", style: "italic" },
+    { name: language === "ru" ? "Альберт Эйнштейн" : "Albert Einstein", style: "normal" },
+    { name: language === "ru" ? "Клеопатра VII" : "Cleopatra VII", style: "italic" },
+    { name: language === "ru" ? "Оскар Уайльд" : "Oscar Wilde", style: "normal" },
+    { name: language === "ru" ? "Наполеон Бонапарт" : "Napoleon Bonaparte", style: "italic" },
+    { name: language === "ru" ? "Фрида Кало" : "Frida Kahlo", style: "normal" },
+  ];
+
+  const navLinks = [
+    { name: t("footer.about"), href: "#hero" },
+    { name: t("footer.characters"), href: "#magic" },
+    { name: t("footer.salon"), href: "#salon" },
+    { name: t("footer.create"), href: "#create" },
+  ];
+
+  const features = [
+    { icon: BookOpen, text: t("footer.feature1") },
+    { icon: Users, text: t("footer.feature2") },
+    { icon: Sparkles, text: t("footer.feature3") },
+  ];
+
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const element = document.querySelector(href);
@@ -57,8 +60,7 @@ const Footer = () => {
             </motion.div>
             
             <p className="text-muted-foreground max-w-lg mx-auto mb-10 leading-relaxed">
-              Платформа для диалога с величайшими умами истории. 
-              Погрузитесь в беседу с прошлым и откройте новые горизонты знаний.
+              {t("footer.description")}
             </p>
 
             {/* Features row with icons */}
@@ -87,7 +89,7 @@ const Footer = () => {
             <div className="text-center md:text-left">
               <h4 className="font-display text-foreground font-medium mb-5 text-sm uppercase tracking-widest flex items-center gap-2 justify-center md:justify-start">
                 <Feather className="w-4 h-4 text-accent" />
-                Навигация
+                {t("footer.nav")}
               </h4>
               <ul className="space-y-3">
                 {navLinks.map((link) => (
@@ -115,11 +117,11 @@ const Footer = () => {
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-sm bg-primary text-primary-foreground font-display hover:bg-primary/90 transition-colors dark:shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
               >
                 <Sparkles className="w-5 h-5" />
-                Начать путешествие
+                {t("footer.cta")}
               </motion.a>
               
               <p className="text-xs text-muted-foreground mt-4">
-                Бесплатно • Без регистрации
+                {t("footer.free")}
               </p>
             </div>
 
@@ -127,7 +129,7 @@ const Footer = () => {
             <div className="text-center md:text-right">
               <h4 className="font-display text-foreground font-medium mb-5 text-sm uppercase tracking-widest flex items-center gap-2 justify-center md:justify-end">
                 <Mail className="w-4 h-4 text-accent" />
-                Связаться
+                {t("footer.contact")}
               </h4>
               <div className="flex justify-center md:justify-end gap-3 mb-4">
                 {["TG", "VK", "YT"].map((social) => (
@@ -143,7 +145,7 @@ const Footer = () => {
               </div>
               <p className="text-xs text-muted-foreground flex items-center gap-1 justify-center md:justify-end">
                 <MapPin className="w-3 h-3" />
-                Санкт-Петербург, Россия
+                {t("footer.location")}
               </p>
             </div>
           </div>
@@ -187,15 +189,15 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground pt-6 border-t border-border/50">
             <p className="flex items-center gap-2">
               <Crown className="w-3 h-3 text-accent/50" />
-              © 2024 Epochal Dialog. 
-              <span className="hidden sm:inline">Все права защищены.</span>
+              {t("footer.copyright")}
+              <span className="hidden sm:inline">{t("footer.rights")}</span>
             </p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-foreground transition-colors hover:underline underline-offset-4">
-                Политика конфиденциальности
+                {t("footer.privacy")}
               </a>
               <a href="#" className="hover:text-foreground transition-colors hover:underline underline-offset-4">
-                Условия использования
+                {t("footer.terms")}
               </a>
             </div>
           </div>

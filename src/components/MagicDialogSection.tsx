@@ -1,9 +1,9 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Sparkles, Users, BookOpen } from "lucide-react";
 import PortraitCard from "./PortraitCard";
 import AnimatedText from "./AnimatedText";
 import ParallaxBackground from "./ParallaxBackground";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 import leonardoImg from "@/assets/portraits/leonardo.jpg";
 import cleopatraImg from "@/assets/portraits/cleopatra.jpg";
@@ -14,64 +14,66 @@ import shakespeareImg from "@/assets/portraits/shakespeare.jpg";
 import curieImg from "@/assets/portraits/curie.jpg";
 import wildeImg from "@/assets/portraits/wilde.jpg";
 
-const portraits = [
-  {
-    name: "Леонардо да Винчи",
-    era: "Ренессанс, XV-XVI век",
-    quote: "Познание без применения подобно дереву без плодов.",
-    image: leonardoImg,
-  },
-  {
-    name: "Клеопатра VII",
-    era: "Древний Египет, I век до н.э.",
-    quote: "Власть — это искусство делать невозможное неизбежным.",
-    image: cleopatraImg,
-  },
-  {
-    name: "Альберт Эйнштейн",
-    era: "XX век",
-    quote: "Воображение важнее знания.",
-    image: einsteinImg,
-  },
-  {
-    name: "Фрида Кало",
-    era: "XX век",
-    quote: "Я не больна — я разбита. Но счастлива быть живой.",
-    image: fridaImg,
-  },
-  {
-    name: "Наполеон Бонапарт",
-    era: "XVIII-XIX век",
-    quote: "Невозможно — слово из словаря глупцов.",
-    image: napoleonImg,
-  },
-  {
-    name: "Уильям Шекспир",
-    era: "Эпоха Возрождения, XVI век",
-    quote: "Весь мир — театр, а люди в нём — актёры.",
-    image: shakespeareImg,
-  },
-  {
-    name: "Мария Кюри",
-    era: "XIX-XX век",
-    quote: "В жизни нет ничего, чего следует бояться — только понимать.",
-    image: curieImg,
-  },
-  {
-    name: "Оскар Уайльд",
-    era: "Викторианская эпоха, XIX век",
-    quote: "Будь собой — все остальные роли уже заняты.",
-    image: wildeImg,
-  },
-];
-
-const stats = [
-  { icon: Users, value: "50+", label: "Исторических личностей" },
-  { icon: BookOpen, value: "15", label: "Эпох и цивилизаций" },
-  { icon: Sparkles, value: "∞", label: "Возможных диалогов" },
-];
-
 const MagicDialogSection = () => {
+  const { t } = useLanguage();
+
+  const portraits = [
+    {
+      name: t("portrait.leonardo.name"),
+      era: t("portrait.leonardo.era"),
+      quote: t("portrait.leonardo.quote"),
+      image: leonardoImg,
+    },
+    {
+      name: t("portrait.cleopatra.name"),
+      era: t("portrait.cleopatra.era"),
+      quote: t("portrait.cleopatra.quote"),
+      image: cleopatraImg,
+    },
+    {
+      name: t("portrait.einstein.name"),
+      era: t("portrait.einstein.era"),
+      quote: t("portrait.einstein.quote"),
+      image: einsteinImg,
+    },
+    {
+      name: t("portrait.frida.name"),
+      era: t("portrait.frida.era"),
+      quote: t("portrait.frida.quote"),
+      image: fridaImg,
+    },
+    {
+      name: t("portrait.napoleon.name"),
+      era: t("portrait.napoleon.era"),
+      quote: t("portrait.napoleon.quote"),
+      image: napoleonImg,
+    },
+    {
+      name: t("portrait.shakespeare.name"),
+      era: t("portrait.shakespeare.era"),
+      quote: t("portrait.shakespeare.quote"),
+      image: shakespeareImg,
+    },
+    {
+      name: t("portrait.curie.name"),
+      era: t("portrait.curie.era"),
+      quote: t("portrait.curie.quote"),
+      image: curieImg,
+    },
+    {
+      name: t("portrait.wilde.name"),
+      era: t("portrait.wilde.era"),
+      quote: t("portrait.wilde.quote"),
+      image: wildeImg,
+    },
+  ];
+
+  const stats = [
+    { icon: Users, value: "50+", label: t("magic.stat1") },
+    { icon: BookOpen, value: "15", label: t("magic.stat2") },
+    { icon: Sparkles, value: "∞", label: t("magic.stat3") },
+  ];
+
   return (
     <section id="magic" className="relative py-24 md:py-32 overflow-hidden">
       {/* Layered background */}
@@ -111,10 +113,10 @@ const MagicDialogSection = () => {
           </motion.div>
 
           <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-medium text-foreground mb-6 dark:drop-shadow-[0_0_20px_hsl(var(--foreground)/0.1)]">
-            <AnimatedText text="Магия" delay={0.2} />{" "}
+            <AnimatedText text={t("magic.title1")} delay={0.2} />{" "}
             <span className="relative inline-block">
               <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">
-                <AnimatedText text="диалога" delay={0.4} />
+                <AnimatedText text={t("magic.title2")} delay={0.4} />
               </span>
               <motion.svg
                 viewBox="0 0 200 20"
@@ -138,8 +140,7 @@ const MagicDialogSection = () => {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Общайтесь с 50+ величайшими умами и сердцами истории: от Леонардо да Винчи до Клеопатры,
-            от Эйнштейна до Фриды Кало.
+            {t("magic.subtitle")}
           </p>
         </motion.div>
 
@@ -215,7 +216,7 @@ const MagicDialogSection = () => {
               ))}
             </div>
             <p className="font-display text-muted-foreground italic">
-              ...и ещё более 40 исторических личностей
+              {t("magic.more")}
             </p>
           </div>
         </motion.div>

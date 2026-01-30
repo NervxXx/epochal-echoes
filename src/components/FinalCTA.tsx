@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { Download, ArrowRight, Sparkles, Crown, Scroll } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const FinalCTA = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="cta" className="relative py-24 md:py-40 overflow-hidden">
       {/* Rich gradient background */}
@@ -109,7 +112,7 @@ const FinalCTA = () => {
             className="font-display text-4xl md:text-6xl lg:text-7xl font-medium text-foreground mb-8 leading-tight"
           >
             <span className="relative inline-block">
-              История ждёт
+              {t("cta.title1")}
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
@@ -120,7 +123,7 @@ const FinalCTA = () => {
             </span>
             <br />
             <span className="text-primary italic dark:drop-shadow-[0_0_25px_hsl(var(--primary)/0.6)]">
-              вашего вопроса
+              {t("cta.title2")}
             </span>
           </motion.h2>
 
@@ -131,7 +134,7 @@ const FinalCTA = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed"
           >
-            Присоединяйтесь к тысячам исследователей, которые уже открыли для себя магию диалога с прошлым
+            {t("cta.subtitle")}
           </motion.p>
 
           {/* Stats */}
@@ -143,9 +146,9 @@ const FinalCTA = () => {
             className="flex flex-wrap justify-center gap-8 md:gap-16 mb-12"
           >
             {[
-              { value: "10K+", label: "Пользователей" },
-              { value: "500K+", label: "Диалогов" },
-              { value: "4.9", label: "Рейтинг" },
+              { value: "10K+", label: t("cta.stat1") },
+              { value: "500K+", label: t("cta.stat2") },
+              { value: "4.9", label: t("cta.stat3") },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -178,7 +181,7 @@ const FinalCTA = () => {
             >
               <span className="relative z-10 flex items-center justify-center gap-3">
                 <Download className="w-5 h-5" />
-                Скачать приложение
+                {t("cta.download")}
               </span>
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-accent/30 via-transparent to-accent/30"
@@ -193,7 +196,7 @@ const FinalCTA = () => {
               className="group px-10 py-5 bg-transparent border-2 border-primary text-primary font-display text-lg rounded-sm transition-all duration-300 hover:bg-primary/10 flex items-center justify-center gap-3"
             >
               <Scroll className="w-5 h-5" />
-              Начать бесплатно
+              {t("cta.start")}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </motion.button>
           </motion.div>
@@ -208,7 +211,7 @@ const FinalCTA = () => {
           >
             <span className="inline-flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-accent" />
-              Бесплатный доступ • Без кредитной карты
+              {t("cta.trust")}
             </span>
           </motion.div>
 

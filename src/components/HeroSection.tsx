@@ -1,11 +1,13 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Scroll, Feather, Crown } from "lucide-react";
 import heroBackground from "@/assets/hero-background.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroSection = () => {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const { t } = useLanguage();
 
   const scrollToContent = () => {
     document.getElementById("magic")?.scrollIntoView({ behavior: "smooth" });
@@ -187,11 +189,11 @@ const HeroSection = () => {
               transition={{ delay: 1.2, duration: 0.8 }}
               className="absolute bottom-2 left-0 h-3 bg-accent/20 -z-10"
             />
-            Оживи голоса прошлого.
+            {t("hero.tagline1")}
           </span>
           <br />
           <span className="text-primary italic dark:drop-shadow-[0_0_25px_hsl(var(--primary)/0.6)]">
-            Веди диалог с историей.
+            {t("hero.tagline2")}
           </span>
         </motion.h1>
 
@@ -203,7 +205,7 @@ const HeroSection = () => {
           className="flex items-center justify-center gap-4 text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto"
         >
           <Feather className="w-5 h-5 text-accent hidden sm:block" />
-          <p>Погрузитесь в беседу с величайшими умами человечества — от философов древности до гениев XX века</p>
+          <p>{t("hero.subtitle")}</p>
           <Scroll className="w-5 h-5 text-accent hidden sm:block" />
         </motion.div>
 
@@ -221,7 +223,7 @@ const HeroSection = () => {
           >
             <span className="relative z-10 flex items-center gap-2">
               <Scroll className="w-5 h-5" />
-              Начать путешествие
+              {t("hero.cta")}
             </span>
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-accent/30 via-transparent to-accent/30"
@@ -231,7 +233,7 @@ const HeroSection = () => {
           </motion.button>
 
           <span className="text-muted-foreground font-display italic text-sm">
-            Бесплатно
+            {t("hero.free")}
           </span>
         </motion.div>
       </motion.div>
