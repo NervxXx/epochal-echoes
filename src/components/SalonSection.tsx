@@ -1,8 +1,9 @@
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { MessageCircle, Users, Star, Bookmark } from "lucide-react";
 import AnimatedText from "./AnimatedText";
 import ParallaxBackground from "./ParallaxBackground";
+import { useLanguage } from "@/contexts/LanguageContext";
 import napoleonImg from "@/assets/portraits/napoleon.jpg";
 import shakespeareImg from "@/assets/portraits/shakespeare.jpg";
 import curieImg from "@/assets/portraits/curie.jpg";
@@ -10,17 +11,18 @@ import curieImg from "@/assets/portraits/curie.jpg";
 const SalonSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
 
   const portraits = [
-    { name: "Наполеон", image: napoleonImg },
-    { name: "Шекспир", image: shakespeareImg },
-    { name: "Мария Кюри", image: curieImg },
+    { name: t("salon.napoleon"), image: napoleonImg },
+    { name: t("salon.shakespeare"), image: shakespeareImg },
+    { name: t("salon.curie"), image: curieImg },
   ];
 
   const features = [
-    { icon: Users, text: "Создавайте групповые чаты с любыми историческими персонажами" },
-    { icon: MessageCircle, text: "Задавайте темы для дискуссии или наблюдайте свободный диалог" },
-    { icon: Bookmark, text: "Сохраняйте лучшие моменты бесед в коллекцию" },
+    { icon: Users, text: t("salon.feature1") },
+    { icon: MessageCircle, text: t("salon.feature2") },
+    { icon: Bookmark, text: t("salon.feature3") },
   ];
 
   return (
@@ -69,14 +71,14 @@ const SalonSection = () => {
               className="inline-flex items-center gap-2 bg-accent/10 px-4 py-2 rounded-full mb-6"
             >
               <Star className="w-4 h-4 text-accent" />
-              <span className="text-sm text-accent font-medium">Эксклюзивная функция</span>
+              <span className="text-sm text-accent font-medium">{t("salon.badge")}</span>
             </motion.div>
 
             <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground mb-6 dark:drop-shadow-[0_0_20px_hsl(var(--foreground)/0.1)]">
-              <AnimatedText text="Создай свой" delay={0.2} />{" "}
+              <AnimatedText text={t("salon.title1")} delay={0.2} />{" "}
               <span className="relative inline-block">
                 <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">
-                  <AnimatedText text="салон" delay={0.5} />
+                  <AnimatedText text={t("salon.title2")} delay={0.5} />
                 </span>
                 <motion.div
                   initial={{ width: 0 }}
@@ -89,12 +91,11 @@ const SalonSection = () => {
             </h2>
 
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Соберите уникальные группы. Что обсудят в одной комнате{" "}
-              <span className="text-foreground font-medium">Цезарь, Tesla и Будда</span>?
+              {t("salon.subtitle1")}{" "}
+              <span className="text-foreground font-medium">{t("salon.subtitle1.names")}</span>?
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-              Станьте режиссёром исторического диспута. Наблюдайте, как великие умы обмениваются идеями,
-              спорят и находят неожиданные точки соприкосновения.
+              {t("salon.subtitle2")}
             </p>
 
             {/* Feature list with enhanced styling */}
@@ -265,7 +266,7 @@ const SalonSection = () => {
                 <div className="flex items-start gap-3">
                   <MessageCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                   <p className="text-sm text-muted-foreground italic font-display leading-relaxed">
-                    "Мадам Кюри, как вы относитесь к военному применению науки?"
+                    "{t("salon.message")}"
                   </p>
                 </div>
               </div>
@@ -278,7 +279,7 @@ const SalonSection = () => {
                 className="mt-3 ml-8"
               >
                 <div className="inline-flex items-center gap-1 bg-secondary/80 px-3 py-2 rounded-full">
-                  <span className="text-xs text-muted-foreground">Мария Кюри печатает</span>
+                  <span className="text-xs text-muted-foreground">{t("salon.typing")}</span>
                   <div className="flex gap-0.5">
                     {[0, 1, 2].map((i) => (
                       <motion.span

@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Sheet,
   SheetContent,
@@ -11,16 +13,17 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
-const navItems = [
-  { name: "Главная", href: "#hero" },
-  { name: "Персонажи", href: "#magic" },
-  { name: "Салон", href: "#salon" },
-  { name: "Создать", href: "#create" },
-  { name: "Демо", href: "#demo" },
-];
-
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const navItems = [
+    { name: t("nav.home"), href: "#hero" },
+    { name: t("nav.characters"), href: "#magic" },
+    { name: t("nav.salon"), href: "#salon" },
+    { name: t("nav.create"), href: "#create" },
+    { name: t("nav.demo"), href: "#demo" },
+  ];
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -71,7 +74,7 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Right side: Mobile menu + Theme toggle + CTA */}
+          {/* Right side: Mobile menu + Language + Theme toggle + CTA */}
           <div className="flex items-center gap-3">
             {/* Mobile hamburger menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -87,7 +90,7 @@ const Navigation = () => {
               </SheetTrigger>
               <SheetContent side="right" className="w-[280px] bg-background/95 backdrop-blur-md">
                 <SheetHeader>
-                  <SheetTitle className="font-display text-lg">Навигация</SheetTitle>
+                  <SheetTitle className="font-display text-lg">{t("nav.navigation")}</SheetTitle>
                 </SheetHeader>
                 <nav className="mt-8 flex flex-col gap-2">
                   {navItems.map((item) => (
@@ -105,12 +108,13 @@ const Navigation = () => {
                     onClick={(e) => scrollToSection(e, "#cta")}
                     className="mt-4 px-4 py-3 rounded-full bg-primary text-primary-foreground text-center font-medium hover:bg-primary/90 transition-colors"
                   >
-                    Начать
+                    {t("nav.start")}
                   </a>
                 </nav>
               </SheetContent>
             </Sheet>
 
+            <LanguageSwitcher />
             <ThemeToggle />
             
             <motion.a
@@ -120,7 +124,7 @@ const Navigation = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Начать
+              {t("nav.start")}
             </motion.a>
           </div>
         </div>

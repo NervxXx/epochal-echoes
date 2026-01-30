@@ -2,20 +2,27 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Send, Sparkles, Quote, RotateCcw, MessageCircle } from "lucide-react";
 import wildeImg from "@/assets/portraits/wilde.jpg";
-
-const presetResponses: Record<string, string> = {
-  "совет": "Мой дорогой друг, единственный способ избавиться от искушения — поддаться ему. Что касается советов — я их охотно даю, ведь это единственное, что можно дать, не потеряв. Будьте собой, но только самой интересной версией.",
-  "любовь": "Любовь — это таинство, к которому всё должно приноситься в жертву, включая здравый смысл. Когда любишь, начинаешь с самообмана и заканчиваешь обманом других. Это называют романтикой.",
-  "счастье": "Говорят, что счастье делает людей добрыми, но лично я полагаю, что доброта — это то, что делает людей счастливыми. В нашем мире есть только два вида трагедий: когда не получаешь то, что хочешь, и когда получаешь.",
-  "успех": "Успех — это всего лишь вопрос удачи. Спросите любого неудачника. Единственное, что хуже, чем быть объектом разговоров — это не быть им. Делайте то, что для вас естественно, и делайте это великолепно.",
-  "default": "Какой восхитительный вопрос! Знаете, я человек простых вкусов — мне всегда хватает самого лучшего. Позвольте сказать вам одно: будьте собой — все остальные роли уже заняты. А теперь расскажите мне что-нибудь интересное о себе.",
-};
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const DemoChat = () => {
+  const { t, language } = useLanguage();
+
+  const presetResponses: Record<string, string> = {
+    "совет": t("demo.response.advice"),
+    "advice": t("demo.response.advice"),
+    "любовь": t("demo.response.love"),
+    "love": t("demo.response.love"),
+    "счастье": t("demo.response.happiness"),
+    "happiness": t("demo.response.happiness"),
+    "успех": t("demo.response.success"),
+    "success": t("demo.response.success"),
+    "default": t("demo.response.default"),
+  };
+
   const [messages, setMessages] = useState<Array<{ role: "user" | "assistant"; content: string }>>([
     {
       role: "assistant",
-      content: "Добрый день, мой любознательный друг! Оскар Уайльд к вашим услугам. Я готов поделиться мудростью, остроумием и, возможно, толикой скандальности. О чём вы хотели бы поговорить?",
+      content: t("demo.wilde.greeting"),
     },
   ]);
   const [input, setInput] = useState("");
@@ -48,15 +55,15 @@ const DemoChat = () => {
   const resetChat = () => {
     setMessages([{
       role: "assistant",
-      content: "Добрый день, мой любознательный друг! Оскар Уайльд к вашим услугам. Я готов поделиться мудростью, остроумием и, возможно, толикой скандальности. О чём вы хотели бы поговорить?",
+      content: t("demo.wilde.greeting"),
     }]);
   };
 
   const suggestedQuestions = [
-    "Дай совет о жизни",
-    "Что думаешь о любви?",
-    "Как достичь успеха?",
-    "В чём секрет счастья?",
+    t("demo.suggestion1"),
+    t("demo.suggestion2"),
+    t("demo.suggestion3"),
+    t("demo.suggestion4"),
   ];
 
   return (
@@ -81,17 +88,17 @@ const DemoChat = () => {
             whileHover={{ scale: 1.05 }}
           >
             <Sparkles className="w-4 h-4 text-accent" />
-            <span className="text-sm text-accent font-medium">Интерактивное демо</span>
+            <span className="text-sm text-accent font-medium">{t("demo.badge")}</span>
           </motion.div>
           
           <h2 className="font-display text-3xl md:text-5xl font-medium text-foreground mb-6 dark:drop-shadow-[0_0_20px_hsl(var(--foreground)/0.1)]">
-            Попробуйте{" "}
+            {t("demo.title1")}{" "}
             <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">
-              прямо сейчас
+              {t("demo.title2")}
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Задайте вопрос Оскару Уайльду — одному из самых остроумных писателей в истории
+            {t("demo.subtitle")}
           </p>
         </motion.div>
 
@@ -122,10 +129,10 @@ const DemoChat = () => {
                   />
                 </div>
                 <div className="flex-grow">
-                  <h3 className="font-display font-medium text-foreground text-lg">Оскар Уайльд</h3>
+                  <h3 className="font-display font-medium text-foreground text-lg">{t("portrait.wilde.name")}</h3>
                   <p className="text-sm text-muted-foreground flex items-center gap-2">
                     <Quote className="w-3 h-3" />
-                    Писатель, драматург • XIX век
+                    {t("demo.wilde.role")}
                   </p>
                 </div>
                 <motion.button
@@ -133,7 +140,7 @@ const DemoChat = () => {
                   whileTap={{ scale: 0.9 }}
                   onClick={resetChat}
                   className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
-                  title="Начать заново"
+                  title={language === "ru" ? "Начать заново" : "Start over"}
                 >
                   <RotateCcw className="w-4 h-4" />
                 </motion.button>
@@ -210,7 +217,7 @@ const DemoChat = () => {
                     exit={{ opacity: 0, height: 0 }}
                     className="px-6 pb-4"
                   >
-                    <p className="text-xs text-muted-foreground mb-3 font-display">Попробуйте спросить:</p>
+                    <p className="text-xs text-muted-foreground mb-3 font-display">{t("demo.try")}</p>
                     <div className="flex flex-wrap gap-2">
                       {suggestedQuestions.map((question, index) => (
                         <motion.button
@@ -240,7 +247,7 @@ const DemoChat = () => {
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                      placeholder="Напишите сообщение..."
+                      placeholder={t("demo.placeholder")}
                       className="w-full px-5 py-3 bg-background border border-border rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
                     />
                   </div>
