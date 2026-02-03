@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { Sparkles, Users, BookOpen } from "lucide-react";
 import PortraitCard from "./PortraitCard";
-import AnimatedText from "./AnimatedText";
-import ParallaxBackground from "./ParallaxBackground";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 import leonardoImg from "@/assets/portraits/leonardo.jpg";
 import cleopatraImg from "@/assets/portraits/cleopatra.jpg";
@@ -16,6 +15,7 @@ import wildeImg from "@/assets/portraits/wilde.jpg";
 
 const MagicDialogSection = () => {
   const { t } = useLanguage();
+  const reducedMotion = useReducedMotion();
 
   const portraits = [
     {
@@ -74,69 +74,48 @@ const MagicDialogSection = () => {
     { icon: Sparkles, value: "∞", label: t("magic.stat3") },
   ];
 
+  const animationProps = reducedMotion 
+    ? { initial: { opacity: 1 }, animate: { opacity: 1 } }
+    : {};
+
   return (
     <section id="magic" className="relative py-24 md:py-32 overflow-hidden">
       {/* Layered background */}
       <div className="absolute inset-0 bg-secondary/50" />
       <div className="absolute inset-0 texture-paper" />
       
-      {/* Parallax decorative pattern */}
-      <ParallaxBackground speed={0.3} className="absolute inset-0 opacity-5 dark:opacity-[0.02]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px'
-        }} />
-      </ParallaxBackground>
+      {/* Static decorative pattern on mobile, parallax on desktop */}
+      {!reducedMotion && (
+        <div className="absolute inset-0 opacity-5 dark:opacity-[0.02]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='none' stroke='%23000' stroke-width='0.5'/%3E%3C/svg%3E")`,
+            backgroundSize: '60px 60px'
+          }} />
+        </div>
+      )}
 
       <div className="relative z-10 container mx-auto px-4">
-        {/* Section Header with decorative elements */}
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: reducedMotion ? 0 : 0.8 }}
           className="text-center mb-16"
         >
           {/* Decorative top ornament */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="flex justify-center mb-6"
-          >
+          <div className="flex justify-center mb-6">
             <div className="flex items-center gap-3">
               <div className="w-12 h-px bg-gradient-to-r from-transparent to-accent" />
               <Sparkles className="w-6 h-6 text-accent dark:drop-shadow-[0_0_10px_hsl(var(--accent))]" />
               <div className="w-12 h-px bg-gradient-to-l from-transparent to-accent" />
             </div>
-          </motion.div>
+          </div>
 
           <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-medium text-foreground mb-6 dark:drop-shadow-[0_0_20px_hsl(var(--foreground)/0.1)]">
-            <AnimatedText text={t("magic.title1")} delay={0.2} />{" "}
-            <span className="relative inline-block">
-              <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">
-                <AnimatedText text={t("magic.title2")} delay={0.4} />
-              </span>
-              <motion.svg
-                viewBox="0 0 200 20"
-                className="absolute -bottom-2 left-0 w-full h-4"
-                initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.5 }}
-              >
-                <motion.path
-                  d="M0 10 Q50 0 100 10 T200 10"
-                  fill="none"
-                  stroke="hsl(var(--accent))"
-                  strokeWidth="2"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                />
-              </motion.svg>
+            {t("magic.title1")}{" "}
+            <span className="text-primary italic dark:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]">
+              {t("magic.title2")}
             </span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -146,44 +125,31 @@ const MagicDialogSection = () => {
 
         {/* Stats row */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.3 }}
           className="flex flex-wrap justify-center gap-8 md:gap-16 mb-16"
         >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 + index * 0.1 }}
-              className="text-center group"
-            >
+          {stats.map((stat) => (
+            <div key={stat.label} className="text-center group">
               <div className="flex items-center justify-center mb-2">
-                <stat.icon className="w-5 h-5 text-accent mr-2 group-hover:scale-110 transition-transform" />
+                <stat.icon className="w-5 h-5 text-accent mr-2" />
                 <span className="font-display text-3xl md:text-4xl font-semibold text-foreground dark:drop-shadow-[0_0_10px_hsl(var(--foreground)/0.2)]">
                   {stat.value}
                 </span>
               </div>
               <span className="text-sm text-muted-foreground">{stat.label}</span>
-            </motion.div>
+            </div>
           ))}
         </motion.div>
 
         {/* Ornate divider */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="flex items-center justify-center gap-4 mb-16"
-        >
+        <div className="flex items-center justify-center gap-4 mb-16">
           <div className="w-24 md:w-48 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
           <div className="w-2 h-2 rotate-45 bg-accent dark:shadow-[0_0_10px_hsl(var(--accent))]" />
           <div className="w-24 md:w-48 h-px bg-gradient-to-r from-transparent via-accent to-transparent" />
-        </motion.div>
+        </div>
 
         {/* Portrait Gallery */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
@@ -191,17 +157,18 @@ const MagicDialogSection = () => {
             <PortraitCard
               key={portrait.name}
               {...portrait}
-              delay={index * 0.08}
+              delay={reducedMotion ? 0 : index * 0.08}
+              reducedMotion={reducedMotion}
             />
           ))}
         </div>
 
         {/* More figures indicator */}
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={reducedMotion ? { opacity: 1 } : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: reducedMotion ? 0 : 0.8, delay: 0.5 }}
           className="text-center mt-16"
         >
           <div className="inline-flex items-center gap-4 px-6 py-3 bg-card/50 backdrop-blur-sm border border-border rounded-full">
