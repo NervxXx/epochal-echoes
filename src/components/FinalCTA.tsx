@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Download, ArrowRight, Sparkles, Crown, Scroll } from "lucide-react";
+import { ArrowRight, Sparkles, Crown, Scroll } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const FinalCTA = () => {
@@ -166,22 +166,23 @@ const FinalCTA = () => {
             ))}
           </motion.div>
 
-          {/* CTA Buttons */}
+          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex justify-center"
           >
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0 0 50px hsl(var(--primary) / 0.5)" }}
               whileTap={{ scale: 0.98 }}
-              className="group relative px-10 py-5 bg-primary text-primary-foreground font-display text-lg rounded-sm overflow-hidden transition-all duration-300 dark:shadow-[0_0_40px_hsl(var(--primary)/0.4)]"
+              className="group relative px-10 py-5 bg-primary text-primary-foreground font-display text-lg rounded-sm overflow-hidden transition-all duration-300 dark:shadow-[0_0_40px_hsl(var(--primary)/0.4)] flex items-center justify-center gap-3"
             >
               <span className="relative z-10 flex items-center justify-center gap-3">
-                <Download className="w-5 h-5" />
-                {t("cta.download")}
+                <Scroll className="w-5 h-5" />
+                {t("cta.start")}
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-accent/30 via-transparent to-accent/30"
@@ -189,30 +190,6 @@ const FinalCTA = () => {
                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               />
             </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="group px-10 py-5 bg-transparent border-2 border-primary text-primary font-display text-lg rounded-sm transition-all duration-300 hover:bg-primary/10 flex items-center justify-center gap-3"
-            >
-              <Scroll className="w-5 h-5" />
-              {t("cta.start")}
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-          </motion.div>
-
-          {/* Trust badge */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1.1 }}
-            className="mt-8 text-sm text-muted-foreground"
-          >
-            <span className="inline-flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-accent" />
-              {t("cta.trust")}
-            </span>
           </motion.div>
 
           {/* Bottom ornament */}
