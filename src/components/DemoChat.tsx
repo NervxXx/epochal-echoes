@@ -118,7 +118,14 @@ const DemoChat = () => {
               <div className="flex items-center gap-4 px-6 py-4 bg-gradient-to-r from-secondary/80 via-secondary/50 to-secondary/80 border-b border-border">
                 <div className="relative">
                   <div className="w-14 h-14 rounded-full overflow-hidden border-3 border-accent/50 shadow-lg">
-                    <img src={wildeImg} alt="Oscar Wilde" loading="lazy" className="w-full h-full object-cover" />
+                    <img 
+                      src={wildeImg} 
+                      alt="Портрет Оскара Уайльда — ирландского писателя и драматурга XIX века" 
+                      width={56}
+                      height={56}
+                      loading="lazy" 
+                      className="w-full h-full object-cover" 
+                    />
                   </div>
                   <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-emerald rounded-full border-2 border-card" />
                 </div>

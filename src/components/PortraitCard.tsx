@@ -27,7 +27,9 @@ const PortraitCard = ({ name, era, quote, image, delay = 0, reducedMotion = fals
           <div className="relative aspect-[3/4] overflow-hidden">
             <img
               src={image}
-              alt={name}
+              alt={`Портрет ${name} — ${era}. ${quote}`}
+              width={300}
+              height={400}
               loading="lazy"
               decoding="async"
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -79,7 +81,9 @@ const PortraitCard = ({ name, era, quote, image, delay = 0, reducedMotion = fals
         >
           <img
             src={image}
-            alt={name}
+            alt={`Портрет ${name} — ${era}. ${quote}`}
+            width={300}
+            height={400}
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover"

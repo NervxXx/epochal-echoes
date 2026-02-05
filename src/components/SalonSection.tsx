@@ -158,7 +158,9 @@ const SalonSection = () => {
                     <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden border-4 border-accent/50 shadow-portrait">
                       <img
                         src={portrait.image}
-                        alt={portrait.name}
+                        alt={`Портрет ${portrait.name} для группового диалога в салоне`}
+                        width={112}
+                        height={112}
                         loading="lazy"
                         decoding="async"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
