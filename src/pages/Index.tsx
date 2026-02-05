@@ -7,37 +7,41 @@ import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import ScrollProgress from "@/components/ScrollProgress";
+import SEOHead from "@/components/SEOHead";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <>
+      <SEOHead />
       {/* Navigation */}
       <Navigation />
-      
-      {/* Scroll Progress Indicator */}
-      <ScrollProgress />
 
-      {/* Hero Section */}
-      <HeroSection />
+      <main className="min-h-screen bg-background overflow-x-hidden" role="main">
+        {/* Scroll Progress Indicator */}
+        <ScrollProgress />
 
-      {/* Magic of Dialogue Section */}
-      <MagicDialogSection />
+        {/* Hero Section */}
+        <HeroSection />
 
-      {/* Create Your Salon Section */}
-      <SalonSection />
+        {/* Magic of Dialogue Section */}
+        <MagicDialogSection />
 
-      {/* Bring Your Hero Section */}
-      <CreateHeroSection />
+        {/* Create Your Salon Section */}
+        <SalonSection />
 
-      {/* Interactive Demo Chat */}
-      <DemoChat />
+        {/* Bring Your Hero Section */}
+        <CreateHeroSection />
 
-      {/* Final Call to Action */}
-      <FinalCTA />
+        {/* Interactive Demo Chat */}
+        <DemoChat />
+
+        {/* Final Call to Action */}
+        <FinalCTA />
+      </main>
 
       {/* Footer */}
       <Footer />
-    </div>
+    </>
   );
 };
 

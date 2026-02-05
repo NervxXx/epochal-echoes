@@ -24,7 +24,9 @@ const HeroSection = () => {
       >
         <img
           src={heroBackground}
-          alt="Historical map with silhouettes"
+          alt="Старинная карта мира с силуэтами исторических личностей — Леонардо да Винчи, Эйнштейна, Клеопатры"
+          width={1920}
+          height={1080}
           className="w-full h-full object-cover"
           loading="eager"
           decoding="async"

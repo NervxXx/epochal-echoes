@@ -23,6 +23,12 @@ const Footer = () => {
     { name: t("footer.create"), href: "#create" },
   ];
 
+  const socialLinks = [
+    { name: "TG", url: "https://t.me/epochaldialog", label: "Telegram" },
+    { name: "VK", url: "https://vk.com/epochaldialog", label: "VKontakte" },
+    { name: "YT", url: "https://youtube.com/@epochaldialog", label: "YouTube" },
+  ];
+
   const features = [
     { icon: BookOpen, text: t("footer.feature1") },
     { icon: Users, text: t("footer.feature2") },
@@ -132,14 +138,17 @@ const Footer = () => {
                 {t("footer.contact")}
               </h4>
               <div className="flex justify-center md:justify-end gap-3 mb-4">
-                {["TG", "VK", "YT"].map((social) => (
+                {socialLinks.map((social) => (
                   <motion.a
-                    key={social}
-                    href="#"
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     className="w-11 h-11 rounded-full border-2 border-accent/30 flex items-center justify-center text-accent hover:bg-accent/10 hover:border-accent/50 transition-all font-display text-sm dark:shadow-[0_0_15px_hsl(var(--accent)/0.2)]"
                   >
-                    {social}
+                    {social.name}
                   </motion.a>
                 ))}
               </div>
@@ -193,12 +202,12 @@ const Footer = () => {
               <span className="hidden sm:inline">{t("footer.rights")}</span>
             </p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-foreground transition-colors hover:underline underline-offset-4">
+              <span className="cursor-not-allowed opacity-60" title={language === "ru" ? "Скоро" : "Coming soon"}>
                 {t("footer.privacy")}
-              </a>
-              <a href="#" className="hover:text-foreground transition-colors hover:underline underline-offset-4">
+              </span>
+              <span className="cursor-not-allowed opacity-60" title={language === "ru" ? "Скоро" : "Coming soon"}>
                 {t("footer.terms")}
-              </a>
+              </span>
             </div>
           </div>
         </div>

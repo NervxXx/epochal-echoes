@@ -10,6 +10,10 @@ interface LanguageContextType {
 
 const translations: Record<Language, Record<string, string>> = {
   ru: {
+    // Meta SEO
+    "meta.title": "Epochal Dialog — Диалог с историей | AI чат с историческими личностями",
+    "meta.description": "Оживи голоса прошлого. Общайтесь с 50+ величайшими умами истории — от Леонардо да Винчи до Эйнштейна. Создавайте уникальные салоны для дискуссий.",
+    
     // Navigation
     "nav.home": "Главная",
     "nav.characters": "Персонажи",
@@ -154,6 +158,10 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.terms": "Условия использования",
   },
   en: {
+    // Meta SEO
+    "meta.title": "Epochal Dialog — Dialogue with History | AI Chat with Historical Figures",
+    "meta.description": "Bring voices of the past to life. Converse with 50+ of history's greatest minds — from Leonardo da Vinci to Einstein. Create unique discussion salons.",
+    
     // Navigation
     "nav.home": "Home",
     "nav.characters": "Characters",
