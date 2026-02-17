@@ -147,7 +147,7 @@ const translations: Record<Language, Record<string, string>> = {
   en: {
     // Meta SEO
     "meta.title": "Epochal Dialog — Dialogue with History | AI Chat with Historical Figures",
-    "meta.description": "Bring voices of the past to life. Converse with 50+ of history's greatest minds — from Leonardo da Vinci to Einstein. Create unique discussion groups.",
+    "meta.description": "Bring voices of the past to life. Converse with 100+ of history's greatest minds — from Leonardo da Vinci to Einstein. Create unique discussion groups.",
 
     // Navigation
     "nav.home": "Home",
@@ -167,7 +167,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Magic Dialog Section
     "magic.title1": "The Magic",
     "magic.title2": "of Dialogue",
-    "magic.subtitle": "Converse with 50+ of history's greatest minds and hearts: from Leonardo da Vinci to Cleopatra, from Einstein to Frida Kahlo.",
+    "magic.subtitle": "Converse with 100+ of history's greatest minds and hearts: from Leonardo da Vinci to Cleopatra, from Einstein to Frida Kahlo.",
     "magic.stat1": "Historical Figures",
     "magic.stat2": "Eras & Civilizations",
     "magic.stat3": "Possible Dialogues",
@@ -261,7 +261,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Footer
     "footer.description": "A platform for dialogue with history's greatest minds. Immerse yourself in conversations with the past and discover new horizons of knowledge.",
-    "footer.feature1": "50+ historical characters",
+    "footer.feature1": "100+ historical characters",
     "footer.feature2": "Group dialogues",
     "footer.feature3": "Next-gen AI",
     "footer.nav": "Navigation",
