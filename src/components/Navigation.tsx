@@ -49,7 +49,7 @@ const Navigation = () => {
             className="flex items-center gap-2 font-display text-xl font-semibold text-foreground hover:text-primary transition-colors"
             whileHover={{ scale: 1.02 }}
           >
-            <img src="/logo.png" alt="Epochal Dialog Logo" className="h-8 w-auto rounded-sm" width="32" height="32" />
+            <img src="/logo.webp" alt="Epochal Dialog Logo" className="h-8 w-auto rounded-sm" width="32" height="32" />
             <span className="dark:drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]">
               Epochal Dialog
             </span>

@@ -3,9 +3,9 @@ import { useRef } from "react";
 import { MessageCircle, Users, Star, Bookmark } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import napoleonImg from "@/assets/portraits/Napoleon Bonaparte.png";
-import shakespeareImg from "@/assets/portraits/William Shakespeare.png";
-import beethovenImg from "@/assets/portraits/Ludwig van Beethoven.png";
+import napoleonImg from "@/assets/compressed/Napoleon Bonaparte_compressed.webp";
+import shakespeareImg from "@/assets/compressed/William Shakespeare_compressed.webp";
+import beethovenImg from "@/assets/compressed/Ludwig van Beethoven_compressed.webp";
 
 const SalonSection = () => {
   const ref = useRef(null);

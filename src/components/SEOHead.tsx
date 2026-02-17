@@ -7,7 +7,7 @@ const SEOHead = () => {
   const baseUrl = "https://www.land-epochaldialog.com";
   const currentUrl = `${baseUrl}${language !== "ru" ? `?lang=${language}` : ""}`;
   const ogImageUrl = `${baseUrl}/preview.png`;
-  const logoUrl = `${baseUrl}/logo.png`;
+  const logoUrl = `${baseUrl}/logo.webp`;
   
   const locale = language === "ru" ? "ru_RU" : "en_US";
   const alternateLocale = language === "ru" ? "en_US" : "ru_RU";

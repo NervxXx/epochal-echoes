@@ -60,7 +60,7 @@ const Footer = () => {
               viewport={{ once: true }}
               className="mb-6 flex items-center justify-center gap-3"
             >
-              <img src="/logo.png" alt="Epochal Dialog Logo" className="h-16 w-auto rounded-sm" width="64" height="64" />
+              <img src="/logo.webp" alt="Epochal Dialog Logo" className="h-16 w-auto rounded-sm" width="64" height="64" />
               <span className="font-display text-3xl font-semibold text-foreground">
                 Epochal<span className="text-primary dark:drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]">Dialog</span>
               </span>
