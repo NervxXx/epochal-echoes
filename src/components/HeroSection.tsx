@@ -201,14 +201,15 @@ const HeroSection = () => {
           transition={{ duration: reducedMotion ? 0 : 0.8, delay: 1 }}
           className="flex flex-col gap-4 justify-center items-center"
         >
-          <button
-            className="group relative px-10 py-4 bg-primary text-primary-foreground font-display text-lg rounded-sm overflow-hidden transition-all duration-300 hover:scale-105 dark:shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
+          <a
+            href="https://epochaldialog.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative px-10 py-4 bg-primary text-primary-foreground font-display text-lg rounded-sm overflow-hidden transition-all duration-300 hover:scale-105 dark:shadow-[0_0_30px_hsl(var(--primary)/0.4)] inline-flex items-center gap-2"
           >
-            <span className="relative z-10 flex items-center gap-2">
-              <Scroll className="w-5 h-5" />
-              {t("hero.cta")}
-            </span>
-          </button>
+            <Scroll className="w-5 h-5" />
+            {t("hero.cta")}
+          </a>
 
           <span className="text-muted-foreground font-display italic text-sm">
             {t("hero.free")}

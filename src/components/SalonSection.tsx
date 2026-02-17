@@ -3,9 +3,9 @@ import { useRef } from "react";
 import { MessageCircle, Users, Star, Bookmark } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import napoleonImg from "@/assets/portraits/napoleon.jpg";
-import shakespeareImg from "@/assets/portraits/shakespeare.jpg";
-import curieImg from "@/assets/portraits/curie.jpg";
+import napoleonImg from "@/assets/portraits/Napoleon Bonaparte.png";
+import shakespeareImg from "@/assets/portraits/William Shakespeare.png";
+import beethovenImg from "@/assets/portraits/Ludwig van Beethoven.png";
 
 const SalonSection = () => {
   const ref = useRef(null);
@@ -16,7 +16,7 @@ const SalonSection = () => {
   const portraits = [
     { name: t("salon.napoleon"), image: napoleonImg },
     { name: t("salon.shakespeare"), image: shakespeareImg },
-    { name: t("salon.curie"), image: curieImg },
+    { name: t("salon.beethoven"), image: beethovenImg },
   ];
 
   const features = [
@@ -139,7 +139,10 @@ const SalonSection = () => {
                 { left: "35%", top: "55%" },
                 { left: "62%", top: "15%" },
               ];
-              
+
+              // For tablet (768px-1024px), Napoleon (index 0) gets left: 20%
+              const isNapoleon = index === 0;
+
               return (
                 <motion.div
                   key={portrait.name}
@@ -147,8 +150,7 @@ const SalonSection = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: reducedMotion ? 0 : 0.6, delay: reducedMotion ? 0 : 0.5 + index * 0.2, type: "spring" }}
-                  className="absolute"
-                  style={positions[index]}
+                  className={`absolute top-[15%] ${index === 0 ? 'left-[20%] lg:left-[5%]' : index === 1 ? 'top-[55%] left-[35%]' : 'left-[62%]'}`}
                 >
                   <div className="relative cursor-pointer group">
                     {/* Inner glow */}
@@ -158,7 +160,7 @@ const SalonSection = () => {
                     <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-full overflow-hidden border-4 border-accent/50 shadow-portrait">
                       <img
                         src={portrait.image}
-                        alt={`Портрет ${portrait.name} для группового диалога в салоне`}
+                        alt={`Портрет ${portrait.name} для группового диалога в группе`}
                         width={112}
                         height={112}
                         loading="lazy"
@@ -184,7 +186,7 @@ const SalonSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: reducedMotion ? 0 : 0.6, delay: reducedMotion ? 0 : 1.5 }}
-              className="absolute -bottom-16 left-1/4 -translate-x-1/4 w-full max-w-xs"
+              className="absolute -bottom-16 left-4 lg:left-1/4 lg:-translate-x-1/4 w-full max-w-xs"
             >
               <div className="bg-card/90 backdrop-blur-sm border border-border rounded-2xl px-5 py-4 shadow-elevated">
                 <div className="flex items-start gap-3">

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Sliders, BookOpen, MessageSquare, Sparkles, Wand2, Upload, Check } from "lucide-react";
+import { Sliders, BookOpen, MessageSquare, Sparkles, Wand2, Type, Check } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -15,7 +15,7 @@ const CreateHeroSection = () => {
   ];
 
   const steps = [
-    { icon: Upload, text: t("create.step1"), done: true },
+    { icon: Type, text: t("create.step1"), done: true },
     { icon: Wand2, text: t("create.step2"), done: true },
     { icon: Sparkles, text: t("create.step3"), done: false },
   ];
@@ -38,7 +38,7 @@ const CreateHeroSection = () => {
             <div className="relative max-w-md mx-auto lg:mx-0">
               {/* Book shadow */}
               <div className="absolute -bottom-4 left-8 right-8 h-8 bg-foreground/10 blur-xl rounded-full" />
-              
+
               {/* Book/Grimoire */}
               <div className="relative bg-card rounded-sm shadow-elevated overflow-hidden dark:shadow-[0_0_50px_hsl(var(--accent)/0.2)] border border-border">
                 {/* Book spine effect */}
@@ -63,76 +63,44 @@ const CreateHeroSection = () => {
 
                 {/* Content */}
                 <div className="p-8 space-y-6">
-                  {/* Progress steps */}
-                  <div className="flex items-center justify-between mb-8">
-                    {steps.map((step, index) => (
-                      <div key={step.text} className="flex items-center">
-                        <div
-                          className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                            step.done 
-                              ? 'bg-accent text-accent-foreground' 
-                              : 'bg-secondary text-muted-foreground border-2 border-dashed border-accent/50'
-                          }`}
-                        >
-                          {step.done ? (
-                            <Check className="w-4 h-4" />
-                          ) : (
-                            <step.icon className="w-4 h-4" />
-                          )}
-                        </div>
-                        {index < steps.length - 1 && (
-                          <div className={`w-12 h-0.5 mx-1 ${step.done ? 'bg-accent' : 'bg-border'}`} />
-                        )}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Name input */}
+                  {/* Character Name Input */}
                   <div>
                     <label className="text-sm text-muted-foreground mb-2 block font-display">
-                      {t("create.name.label")}
+                      {t("create.grimoire.characterName.label")}
                     </label>
-                    <div className="bg-background border-2 border-accent/30 rounded-sm px-4 py-3 relative overflow-hidden">
-                      <span className="text-foreground font-display">
-                        {t("create.name.value")}
-                      </span>
-                      <span className="text-accent animate-pulse">|</span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-transparent pointer-events-none" />
-                    </div>
+                    <input
+                      type="text"
+                      readOnly
+                      className="w-full bg-background border-2 border-accent/30 rounded-sm px-4 py-3 text-foreground font-display focus:outline-none cursor-default"
+                      value={t("create.grimoire.characterName.value")}
+                    />
                   </div>
 
-                  {/* Feature sliders */}
-                  {features.map((feature, index) => (
-                    <motion.div
-                      key={feature.label}
-                      initial={reducedMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: reducedMotion ? 0 : 0.5, delay: reducedMotion ? 0 : 0.4 + index * 0.1 }}
-                      className="group"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-primary/10 flex items-center justify-center flex-shrink-0">
-                          <feature.icon className="w-5 h-5 text-accent" />
-                        </div>
-                        <div className="flex-grow">
-                          <div className="flex justify-between text-sm mb-2">
-                            <span className="text-foreground font-medium">{feature.label}</span>
-                            <span className="text-muted-foreground text-xs">{feature.value}</span>
-                          </div>
-                          <div className="h-2 bg-background rounded-full overflow-hidden relative">
-                            <motion.div
-                              className="h-full bg-gradient-to-r from-accent via-ochre to-accent rounded-full"
-                              initial={{ width: 0 }}
-                              whileInView={{ width: `${feature.progress}%` }}
-                              viewport={{ once: true }}
-                              transition={{ duration: reducedMotion ? 0 : 1.2, delay: reducedMotion ? 0 : 0.5 + index * 0.15, ease: "easeOut" }}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
+                  {/* Description Input */}
+                  <div>
+                    <label className="text-sm text-muted-foreground mb-2 block font-display">
+                      {t("create.grimoire.description.label")}
+                    </label>
+                    <textarea
+                      readOnly
+                      value={t("create.grimoire.description.value")}
+                      rows={3}
+                      className="w-full bg-background border-2 border-accent/30 rounded-sm px-4 py-3 text-foreground resize-none focus:outline-none cursor-default custom-scrollbar overflow-y-auto"
+                    />
+                  </div>
+
+                  {/* Prompt Input */}
+                  <div>
+                    <label className="text-sm text-muted-foreground mb-2 block font-display">
+                      {t("create.grimoire.prompt.label")}
+                    </label>
+                    <textarea
+                      readOnly
+                      value={t("create.grimoire.prompt.value")}
+                      rows={3}
+                      className="w-full bg-background border-2 border-accent/30 rounded-sm px-4 py-3 text-foreground resize-none focus:outline-none cursor-default custom-scrollbar overflow-y-auto"
+                    />
+                  </div>
 
                   {/* Create button */}
                   <button

@@ -4,14 +4,14 @@ import PortraitCard from "./PortraitCard";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-import leonardoImg from "@/assets/portraits/leonardo.jpg";
-import cleopatraImg from "@/assets/portraits/cleopatra.jpg";
-import einsteinImg from "@/assets/portraits/einstein.jpg";
-import fridaImg from "@/assets/portraits/frida.jpg";
-import napoleonImg from "@/assets/portraits/napoleon.jpg";
-import shakespeareImg from "@/assets/portraits/shakespeare.jpg";
-import curieImg from "@/assets/portraits/curie.jpg";
-import wildeImg from "@/assets/portraits/wilde.jpg";
+import leonardoImg from "@/assets/portraits/Leonardo da Vinci.png";
+import columbusImg from "@/assets/portraits/Christopher Columbus.png";
+import beethovenImg from "@/assets/portraits/Ludwig van Beethoven.png";
+import napoleonImg from "@/assets/portraits/Napoleon Bonaparte.png";
+import copernicusImg from "@/assets/portraits/Nicolaus Copernicus.png";
+import shakespeareImg from "@/assets/portraits/William Shakespeare.png";
+import mozartImg from "@/assets/portraits/Wolfgang Amadeus Mozart.png";
+import archimedesImg from "@/assets/portraits/Archimedes.png";
 
 const MagicDialogSection = () => {
   const { t } = useLanguage();
@@ -25,22 +25,22 @@ const MagicDialogSection = () => {
       image: leonardoImg,
     },
     {
-      name: t("portrait.cleopatra.name"),
-      era: t("portrait.cleopatra.era"),
-      quote: t("portrait.cleopatra.quote"),
-      image: cleopatraImg,
+      name: t("portrait.columbus.name"),
+      era: t("portrait.columbus.era"),
+      quote: t("portrait.columbus.quote"),
+      image: columbusImg,
     },
     {
-      name: t("portrait.einstein.name"),
-      era: t("portrait.einstein.era"),
-      quote: t("portrait.einstein.quote"),
-      image: einsteinImg,
+      name: t("portrait.beethoven.name"),
+      era: t("portrait.beethoven.era"),
+      quote: t("portrait.beethoven.quote"),
+      image: beethovenImg,
     },
     {
-      name: t("portrait.frida.name"),
-      era: t("portrait.frida.era"),
-      quote: t("portrait.frida.quote"),
-      image: fridaImg,
+      name: t("portrait.archimedes.name"),
+      era: t("portrait.archimedes.era"),
+      quote: t("portrait.archimedes.quote"),
+      image: archimedesImg,
     },
     {
       name: t("portrait.napoleon.name"),
@@ -55,21 +55,21 @@ const MagicDialogSection = () => {
       image: shakespeareImg,
     },
     {
-      name: t("portrait.curie.name"),
-      era: t("portrait.curie.era"),
-      quote: t("portrait.curie.quote"),
-      image: curieImg,
+      name: t("portrait.copernicus.name"),
+      era: t("portrait.copernicus.era"),
+      quote: t("portrait.copernicus.quote"),
+      image: copernicusImg,
     },
     {
-      name: t("portrait.wilde.name"),
-      era: t("portrait.wilde.era"),
-      quote: t("portrait.wilde.quote"),
-      image: wildeImg,
+      name: t("portrait.mozart.name"),
+      era: t("portrait.mozart.era"),
+      quote: t("portrait.mozart.quote"),
+      image: mozartImg,
     },
   ];
 
   const stats = [
-    { icon: Users, value: "50+", label: t("magic.stat1") },
+    { icon: Users, value: "100+", label: t("magic.stat1") },
     { icon: BookOpen, value: "15", label: t("magic.stat2") },
     { icon: Sparkles, value: "∞", label: t("magic.stat3") },
   ];

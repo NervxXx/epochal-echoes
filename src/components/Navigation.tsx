@@ -22,7 +22,6 @@ const Navigation = () => {
     { name: t("nav.characters"), href: "#magic" },
     { name: t("nav.salon"), href: "#salon" },
     { name: t("nav.create"), href: "#create" },
-    { name: t("nav.demo"), href: "#demo" },
   ];
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -47,16 +46,17 @@ const Navigation = () => {
           <motion.a
             href="#hero"
             onClick={(e) => scrollToSection(e, "#hero")}
-            className="font-display text-xl font-semibold text-foreground hover:text-primary transition-colors"
+            className="flex items-center gap-2 font-display text-xl font-semibold text-foreground hover:text-primary transition-colors"
             whileHover={{ scale: 1.02 }}
           >
+            <img src="/logo.png" alt="Epochal Dialog Logo" className="h-8 w-auto rounded-sm" width="32" height="32" />
             <span className="dark:drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]">
               Epochal Dialog
             </span>
           </motion.a>
 
           {/* Navigation Links - Desktop */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden min-[850px]:flex items-center gap-1">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
@@ -82,7 +82,7 @@ const Navigation = () => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="md:hidden"
+                  className="min-[850px]:hidden"
                   aria-label="Открыть меню"
                 >
                   <Menu className="h-5 w-5" />
@@ -103,10 +103,14 @@ const Navigation = () => {
                       {item.name}
                     </a>
                   ))}
+                  <div className="mt-auto pt-6 border-t border-border flex items-center justify-between">
+                    <LanguageSwitcher />
+                    <ThemeToggle />
+                  </div>
                   <a
                     href="#cta"
                     onClick={(e) => scrollToSection(e, "#cta")}
-                    className="mt-4 px-4 py-3 rounded-full bg-primary text-primary-foreground text-center font-medium hover:bg-primary/90 transition-colors"
+                    className="mt-4 px-4 py-3 rounded-full bg-primary text-primary-foreground text-center font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
                   >
                     {t("nav.start")}
                   </a>
@@ -114,9 +118,11 @@ const Navigation = () => {
               </SheetContent>
             </Sheet>
 
-            <LanguageSwitcher />
-            <ThemeToggle />
-            
+            <div className="hidden min-[850px]:flex items-center gap-2">
+              <LanguageSwitcher />
+              <ThemeToggle />
+            </div>
+
             <motion.a
               href="#cta"
               onClick={(e) => scrollToSection(e, "#cta")}

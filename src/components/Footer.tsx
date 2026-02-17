@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Feather, BookOpen, Users, Sparkles, Crown, Mail, MapPin } from "lucide-react";
+import { Feather, BookOpen, Users, Sparkles, Crown, Mail, MapPin, Linkedin, Twitter, Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
@@ -24,9 +24,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: "TG", url: "https://t.me/epochaldialog", label: "Telegram" },
-    { name: "VK", url: "https://vk.com/epochaldialog", label: "VKontakte" },
-    { name: "YT", url: "https://youtube.com/@epochaldialog", label: "YouTube" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/sentiens-apps", label: "LinkedIn", icon: Linkedin },
+    { name: "X", url: "https://x.com/SentiensApps", label: "X (Twitter)", icon: Twitter },
+    { name: "Instagram", url: "https://www.instagram.com/sentiensapps/", label: "Instagram", icon: Instagram },
   ];
 
   const features = [
@@ -47,7 +47,7 @@ const Footer = () => {
     <footer className="relative">
       {/* Simple top border */}
       <div className="h-px bg-border" />
-      
+
       {/* Clean footer background */}
       <div className="relative bg-secondary pt-16 pb-8">
 
@@ -58,13 +58,14 @@ const Footer = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-6"
+              className="mb-6 flex items-center justify-center gap-3"
             >
+              <img src="/logo.png" alt="Epochal Dialog Logo" className="h-16 w-auto rounded-sm" width="64" height="64" />
               <span className="font-display text-3xl font-semibold text-foreground">
                 Epochal<span className="text-primary dark:drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]">Dialog</span>
               </span>
             </motion.div>
-            
+
             <p className="text-muted-foreground max-w-lg mx-auto mb-10 leading-relaxed">
               {t("footer.description")}
             </p>
@@ -92,7 +93,7 @@ const Footer = () => {
           {/* Navigation grid */}
           <div className="grid md:grid-cols-3 gap-10 mb-16">
             {/* Navigation */}
-            <div className="text-center md:text-left">
+            <nav className="text-center md:text-left" aria-label={t("footer.nav")}>
               <h4 className="font-display text-foreground font-medium mb-5 text-sm uppercase tracking-widest flex items-center gap-2 justify-center md:justify-start">
                 <Feather className="w-4 h-4 text-accent" />
                 {t("footer.nav")}
@@ -111,13 +112,14 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
 
             {/* Middle - CTA */}
             <div className="text-center flex flex-col items-center justify-center">
               <motion.a
-                href="#cta"
-                onClick={(e) => scrollToSection(e, "#cta")}
+                href="https://epochaldialog.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-sm bg-primary text-primary-foreground font-display hover:bg-primary/90 transition-colors dark:shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
@@ -125,7 +127,7 @@ const Footer = () => {
                 <Sparkles className="w-5 h-5" />
                 {t("footer.cta")}
               </motion.a>
-              
+
               <p className="text-xs text-muted-foreground mt-4">
                 {t("footer.free")}
               </p>
@@ -148,7 +150,7 @@ const Footer = () => {
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     className="w-11 h-11 rounded-full border-2 border-accent/30 flex items-center justify-center text-accent hover:bg-accent/10 hover:border-accent/50 transition-all font-display text-sm dark:shadow-[0_0_15px_hsl(var(--accent)/0.2)]"
                   >
-                    {social.name}
+                    <social.icon className="w-5 h-5" />
                   </motion.a>
                 ))}
               </div>
@@ -171,7 +173,7 @@ const Footer = () => {
           </div>
 
           {/* Signatures decoration - animated on hover */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -185,9 +187,8 @@ const Footer = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
                 whileHover={{ opacity: 1, scale: 1.1, y: -2 }}
-                className={`font-display text-sm text-muted-foreground cursor-default transition-all duration-300 ${
-                  sig.style === "italic" ? "italic" : ""
-                }`}
+                className={`font-display text-sm text-muted-foreground cursor-default transition-all duration-300 ${sig.style === "italic" ? "italic" : ""
+                  }`}
               >
                 {sig.name}
               </motion.span>
@@ -201,13 +202,31 @@ const Footer = () => {
               {t("footer.copyright")}
               <span className="hidden sm:inline">{t("footer.rights")}</span>
             </p>
-            <div className="flex gap-6">
-              <span className="cursor-not-allowed opacity-60" title={language === "ru" ? "Скоро" : "Coming soon"}>
+            <div className="flex flex-wrap justify-center gap-6">
+              <a
+                href="https://sentiensapps.online"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors"
+              >
+                {t("footer.company")}
+              </a>
+              <a
+                href="https://sentiensapps.online/legal#privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors"
+              >
                 {t("footer.privacy")}
-              </span>
-              <span className="cursor-not-allowed opacity-60" title={language === "ru" ? "Скоро" : "Coming soon"}>
+              </a>
+              <a
+                href="https://sentiensapps.online/legal#terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors"
+              >
                 {t("footer.terms")}
-              </span>
+              </a>
             </div>
           </div>
         </div>

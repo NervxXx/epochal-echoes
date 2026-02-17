@@ -2,7 +2,6 @@ import HeroSection from "@/components/HeroSection";
 import MagicDialogSection from "@/components/MagicDialogSection";
 import SalonSection from "@/components/SalonSection";
 import CreateHeroSection from "@/components/CreateHeroSection";
-import DemoChat from "@/components/DemoChat";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
@@ -31,9 +30,6 @@ const Index = () => {
 
         {/* Bring Your Hero Section */}
         <CreateHeroSection />
-
-        {/* Interactive Demo Chat */}
-        <DemoChat />
 
         {/* Final Call to Action */}
         <FinalCTA />
