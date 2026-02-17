@@ -1,5 +1,67 @@
+# robots.txt for https://www.land-epochaldialog.com
+# Last updated: 2026-02-17
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /404
+Disallow: /500
+Disallow: /offline
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# Google Images
+User-agent: Googlebot-Image
+Allow: /
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /404
+Disallow: /500
+Disallow: /offline
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Disallow: /404
+Disallow: /500
+Disallow: /offline
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# All other bots
 User-agent: *
 Allow: /
 Disallow: /404
+Disallow: /500
+Disallow: /offline
 
-Sitemap: https://epochaldialog.com/sitemap.xml
+# Crawl-delay for all bots
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://www.land-epochaldialog.com/sitemap.xml
+Sitemap: https://www.land-epochaldialog.com/sitemap-images.xml

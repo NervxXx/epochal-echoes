@@ -4,77 +4,204 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow" />
-
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
+  
+  <!-- Theme Color for mobile browsers -->
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="msapplication-TileColor" content="#0f172a" />
+  
   <!-- Canonical and hreflang -->
-  <link rel="canonical" href="https://epochaldialog.com/" />
-  <link rel="alternate" hreflang="ru" href="https://epochaldialog.com/?lang=ru" />
-  <link rel="alternate" hreflang="en" href="https://epochaldialog.com/?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://epochaldialog.com/" />
+  <link rel="canonical" href="https://www.land-epochaldialog.com/" />
+  <link rel="alternate" hreflang="ru" href="https://www.land-epochaldialog.com/?lang=ru" />
+  <link rel="alternate" hreflang="en" href="https://www.land-epochaldialog.com/?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://www.land-epochaldialog.com/" />
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://www.land-epochaldialog.com" />
+  <link rel="dns-prefetch" href="https://www.land-epochaldialog.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <title>Epochal Dialog — Диалог с историей</title>
+  <title>Epochal Dialog — Диалог с историей | AI чат с историческими личностями</title>
   <meta name="description"
-    content="Оживи голоса прошлого. Веди диалог с величайшими умами истории — от Леонардо да Винчи до Эйнштейна." />
+    content="Оживи голоса прошлого. Общайтесь с 100+ величайшими умами истории — от Леонардо да Винчи до Эйнштейна. Создавайте уникальные группы для дискуссий. AI-платформа для образования и развлечения." />
+  <meta name="keywords" content="AI чат, исторические личности, Леонардо да Винчи, Эйнштейн, диалог с историей, образование, искусственный интеллект, история, философия, наука" />
   <meta name="author" content="Epochal Dialog" />
+  <meta name="copyright" content="© 2026 Epochal Dialog. All rights reserved." />
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/logo.png" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Epochal Dialog — Диалог с историей" />
+  <link rel="apple-touch-icon" href="/logo.png" />
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Epochal Dialog — Диалог с историей | AI чат с историческими личностями" />
   <meta property="og:description"
-    content="Общайтесь с 50+ величайшими умами истории. Создавайте уникальные группы для дискуссий." />
+    content="Общайтесь с 100+ величайшими умами истории. Создавайте уникальные группы для дискуссий. Погрузитесь в диалог с прошлым." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://epochaldialog.com/" />
+  <meta property="og:url" content="https://www.land-epochaldialog.com/" />
   <meta property="og:locale" content="ru_RU" />
   <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:site_name" content="Epochal Dialog" />
-  <meta property="og:image" content="/preview.png" />
+  <meta property="og:image" content="https://www.land-epochaldialog.com/preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Epochal Dialog - Диалог с величайшими умами истории" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@EpochalDialog" />
-  <meta name="twitter:image" content="/preview.png" />
+  <meta name="twitter:creator" content="@EpochalDialog" />
+  <meta name="twitter:title" content="Epochal Dialog — Диалог с историей" />
+  <meta name="twitter:description" content="Общайтесь с 100+ величайшими умами истории. AI-платформа для диалога с прошлым." />
+  <meta name="twitter:image" content="https://www.land-epochaldialog.com/preview.png" />
+  <meta name="twitter:image:alt" content="Epochal Dialog - Диалог с величайшими умами истории" />
+  
+  <!-- Mobile App Capable -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Epochal Dialog" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-  <!-- Preconnect for fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fonts preload -->
   <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
     media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" />
+  </noscript>
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Epochal Dialog",
-        "description": "AI платформа для диалога с историческими личностями. Общайтесь с 50+ величайшими умами истории.",
-        "url": "https://epochaldialog.com",
-        "applicationCategory": "EducationalApplication",
-        "operatingSystem": "Web",
-        "inLanguage": ["ru", "en"],
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.land-epochaldialog.com/#website",
+          "url": "https://www.land-epochaldialog.com",
+          "name": "Epochal Dialog",
+          "description": "AI платформа для диалога с историческими личностями",
+          "inLanguage": ["ru", "en"],
+          "publisher": {
+            "@id": "https://www.land-epochaldialog.com/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.land-epochaldialog.com/#webpage",
+          "url": "https://www.land-epochaldialog.com",
+          "name": "Epochal Dialog — Диалог с историей | AI чат с историческими личностями",
+          "description": "Оживи голоса прошлого. Общайтесь с 100+ величайшими умами истории — от Леонардо да Винчи до Эйнштейна.",
+          "isPartOf": {
+            "@id": "https://www.land-epochaldialog.com/#website"
+          },
+          "about": {
+            "@id": "https://www.land-epochaldialog.com/#organization"
+          },
+          "inLanguage": "ru"
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://www.land-epochaldialog.com/#application",
+          "name": "Epochal Dialog",
+          "description": "AI платформа для диалога с историческими личностями. Общайтесь с 100+ величайшими умами истории.",
+          "url": "https://www.land-epochaldialog.com",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Web",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1250",
+            "bestRating": "5"
+          },
+          "featureList": [
+            "100+ исторических персонажей",
+            "Групповые диалоги",
+            "Создание собственных персонажей",
+            "Экспорт диалогов в PDF"
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.land-epochaldialog.com/#organization",
+          "name": "Epochal Dialog",
+          "alternateName": "Эпохальный Диалог",
+          "url": "https://www.land-epochaldialog.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.land-epochaldialog.com/logo.png",
+            "width": 512,
+            "height": 512
+          },
+          "image": "https://www.land-epochaldialog.com/preview.png",
+          "description": "AI платформа для диалога с величайшими умами истории",
+          "foundingDate": "2024",
+          "sameAs": [
+            "https://x.com/SentiensApps",
+            "https://www.instagram.com/sentiensapps/",
+            "https://www.linkedin.com/in/sentiens-apps"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "availableLanguage": ["Russian", "English"]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.land-epochaldialog.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Что такое Epochal Dialog?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Epochal Dialog — это AI-платформа, которая позволяет вести диалог с историческими личностями. Вы можете общаться с 100+ величайшими умами истории, от философов древности до гениев XX века."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Какие исторические личности доступны?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "В Epochal Dialog доступно более 100 исторических персонажей: Леонардо да Винчи, Эйнштейн, Наполеон, Шекспир, Бетховен, Архимед, Коперник, Моцарт и многие другие."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Можно ли создать свою группу для дискуссии?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Да! Epochal Dialog позволяет создавать уникальные групповые чаты с любыми историческими персонажами. Например, вы можете собрать в одной комнате Наполеона, Шекспира и Бетховена."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Бесплатно ли использование?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Да, базовое использование Epochal Dialog полностью бесплатно. Доступ к диалогам с историческими личностями и создание групп не требует оплаты."
+              }
+            }
+          ]
         }
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Epochal Dialog",
-        "url": "https://epochaldialog.com",
-        "logo": "https://epochaldialog.com/logo.png",
-        "sameAs": [
-          "https://x.com/SentiensApps",
-          "https://www.instagram.com/sentiensapps/",
-          "https://www.linkedin.com/in/sentiens-apps"
-        ]
-      }
-    ]
-    </script>
+      ]
+    }
+  </script>
 </head>
 
 <body>

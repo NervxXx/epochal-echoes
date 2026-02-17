@@ -13,9 +13,11 @@ const Index = () => {
     <>
       <SEOHead />
       {/* Navigation */}
-      <Navigation />
+      <header>
+        <Navigation />
+      </header>
 
-      <main className="min-h-screen bg-background overflow-x-hidden" role="main">
+      <main className="min-h-screen bg-background overflow-x-hidden">
         {/* Scroll Progress Indicator */}
         <ScrollProgress />
 
