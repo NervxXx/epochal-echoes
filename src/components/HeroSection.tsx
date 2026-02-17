@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Scroll, Feather, Crown } from "lucide-react";
-import heroBackground from "@/assets/hero-background.jpg";
+import heroBackground from "@/assets/compressed/hero-background_compressed.webp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 

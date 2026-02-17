@@ -4,14 +4,14 @@ import PortraitCard from "./PortraitCard";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-import leonardoImg from "@/assets/portraits/Leonardo da Vinci.png";
-import columbusImg from "@/assets/portraits/Christopher Columbus.png";
-import beethovenImg from "@/assets/portraits/Ludwig van Beethoven.png";
-import napoleonImg from "@/assets/portraits/Napoleon Bonaparte.png";
-import copernicusImg from "@/assets/portraits/Nicolaus Copernicus.png";
-import shakespeareImg from "@/assets/portraits/William Shakespeare.png";
-import mozartImg from "@/assets/portraits/Wolfgang Amadeus Mozart.png";
-import archimedesImg from "@/assets/portraits/Archimedes.png";
+import leonardoImg from "@/assets/compressed/Leonardo da Vinci_compressed.webp";
+import columbusImg from "@/assets/compressed/Christopher Columbus_compressed.webp";
+import beethovenImg from "@/assets/compressed/Ludwig van Beethoven_compressed.webp";
+import napoleonImg from "@/assets/compressed/Napoleon Bonaparte_compressed.webp";
+import copernicusImg from "@/assets/compressed/Nicolaus Copernicus_compressed.webp";
+import shakespeareImg from "@/assets/compressed/William Shakespeare_compressed.webp";
+import mozartImg from "@/assets/compressed/Wolfgang Amadeus Mozart_compressed.webp";
+import archimedesImg from "@/assets/compressed/Archimedes_compressed.webp";
 
 const MagicDialogSection = () => {
   const { t } = useLanguage();
